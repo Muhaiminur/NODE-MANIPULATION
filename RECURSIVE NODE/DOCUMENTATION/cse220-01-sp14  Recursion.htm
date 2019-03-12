@@ -1,0 +1,1097 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0051)http://moodle.bracu.ac.bd/mod/page/view.php?id=5303 -->
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" class="yui3-js-enabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cse220-01-sp14: Recursion</title>
+    <link rel="shortcut icon" href="http://moodle.bracu.ac.bd/theme/image.php?theme=formfactor&image=favicon&rev=162&component=theme">
+    
+<meta name="keywords" content="moodle, cse220-01-sp14: Recursion">
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Recursion_files/yui_combo.php"><script type="text/javascript" src="./cse220-01-sp14  Recursion_files/yui_combo(1).php"></script><script type="text/javascript" src="./cse220-01-sp14  Recursion_files/yui_combo(2).php"></script>
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Recursion_files/yui_combo(3).php">
+<script id="yui_3_2_0_1_13970801010609" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Recursion_files/yui_combo(4).php"></script><script id="yui_3_2_0_1_139708010106010" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Recursion_files/javascript.php"></script><script id="yui_3_2_0_1_139708010106011" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Recursion_files/yui_combo(5).php"></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Recursion_files/styles.php">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {}; var moodleConfigFn = function(me) {var p = me.path, b = me.name.replace(/^moodle-/,'').split('-', 3), n = b.pop();if (/(skin|core)/.test(n)) {n = b.pop();me.type = 'css';};me.path = b.join('-')+'/'+n+'/'+n+'.'+me.type;}; var galleryConfigFn = function(me) {var p = me.path,v=M.yui.galleryversion,f;if(/-(skin|core)/.test(me.name)) {me.type = 'css';p = p.replace(/-(skin|core)/, '').replace(/\.js/, '.css').split('/'), f = p.pop().replace(/(\-(min|debug))/, '');if (/-skin/.test(me.name)) {p.splice(p.length,0,v,'assets','skins','sam', f);} else {p.splice(p.length,0,v,'assets', f);};} else {p = p.split('/'), f = p.pop();p.splice(p.length,0,v, f);};me.path = p.join('/');};
+M.yui.loader = {"base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/3.2.0\/build\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","insertBefore":"firstthemesheet","modules":{"yui2-event":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event\/event-min.js"},"yui2-animation":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/animation\/animation-min.js"},"yui2-swfstore":{"type":"js","requires":["yui2-element","yui2-cookie","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfstore\/swfstore-min.js"},"yui2-datatable":{"requires":["yui2-element","yui2-datasource"],"type":"js","optional":["yui2-calendar","yui2-dragdrop","yui2-paginator"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datatable\/datatable-min.js"},"yui2-swfdetect":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfdetect\/swfdetect-min.js"},"yui2-menu":{"requires":["yui2-containercore"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/menu\/menu-min.js"},"yui2-treeview":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-json","yui2-animation","yui2-calendar"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/treeview\/treeview-min.js"},"yui2-get":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/get\/get-min.js"},"yui2-progressbar":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/progressbar\/progressbar-min.js"},"yui2-uploader":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/uploader\/uploader-min.js"},"yui2-datasource":{"requires":["yui2-event"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datasource\/datasource-min.js"},"yui2-profiler":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profiler\/profiler-min.js"},"yui2-connection":{"supersedes":["yui2-connectioncore"],"requires":["yui2-event"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection-min.js"},"yui2-json":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/json\/json-min.js"},"yui2-datemath":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datemath\/datemath-min.js"},"yui2-calendar":{"supersedes":["yui2-datemath"],"requires":["yui2-event","yui2-dom"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/calendar\/calendar-min.js"},"yui2-simpleeditor":{"requires":["yui2-element"],"type":"js","optional":["yui2-containercore","yui2-menu","yui2-button","yui2-animation","yui2-dragdrop"],"pkg":"editor","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/simpleeditor-min.js"},"yui2-swf":{"supersedes":["yui2-swfdetect"],"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swf\/swf-min.js"},"yui2-event-simulate":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-simulate\/event-simulate-min.js"},"yui2-yuiloader-dom-event":{"supersedes":["yui2-yahoo","yui2-dom","yui2-event","yui2-get","yui2-yuiloader","yui2-yahoo-dom-event"],"rollup":5,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader-dom-event\/yuiloader-dom-event.js"},"yui2-storage":{"requires":["yui2-yahoo","yui2-event","yui2-cookie"],"type":"js","optional":["yui2-swfstore"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/storage\/storage-min.js"},"yui2-container":{"supersedes":["yui2-containercore"],"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-dragdrop","yui2-animation","yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container-min.js"},"yui2-profilerviewer":{"requires":["yui2-profiler","yui2-yuiloader","yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profilerviewer\/profilerviewer-min.js"},"yui2-imagecropper":{"requires":["yui2-dragdrop","yui2-element","yui2-resize"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imagecropper\/imagecropper-min.js"},"yui2-paginator":{"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/paginator\/paginator-min.js"},"yui2-tabview":{"requires":["yui2-element"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/tabview\/tabview-min.js"},"yui2-layout":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation","yui2-dragdrop","yui2-resize","yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/layout\/layout-min.js"},"yui2-imageloader":{"type":"js","requires":["yui2-event","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imageloader\/imageloader-min.js"},"yui2-containercore":{"requires":["yui2-dom","yui2-event"],"type":"js","pkg":"container","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container_core-min.js"},"yui2-event-mouseenter":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-mouseenter\/event-mouseenter-min.js"},"yui2-logger":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/logger\/logger-min.js"},"yui2-cookie":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/cookie\/cookie-min.js"},"yui2-stylesheet":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/stylesheet\/stylesheet-min.js"},"yui2-connectioncore":{"requires":["yui2-event"],"type":"js","pkg":"connection","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection_core-min.js"},"yui2-utilities":{"supersedes":["yui2-yahoo","yui2-event","yui2-dragdrop","yui2-animation","yui2-dom","yui2-connection","yui2-element","yui2-yahoo-dom-event","yui2-get","yui2-yuiloader","yui2-yuiloader-dom-event"],"rollup":8,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/utilities\/utilities.js"},"yui2-dragdrop":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dragdrop\/dragdrop-min.js"},"yui2-colorpicker":{"requires":["yui2-slider","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/colorpicker\/colorpicker-min.js"},"yui2-event-delegate":{"requires":["yui2-event"],"type":"js","optional":["yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-delegate\/event-delegate-min.js"},"yui2-yuiloader":{"type":"js","supersedes":["yui2-yahoo","yui2-get"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader\/yuiloader-min.js"},"yui2-button":{"requires":["yui2-element"],"type":"js","optional":["yui2-menu"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/button\/button-min.js"},"yui2-resize":{"requires":["yui2-dragdrop","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/resize\/resize-min.js"},"yui2-element":{"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-event-mouseenter","yui2-event-delegate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element\/element-min.js"},"yui2-history":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/history\/history-min.js"},"yui2-yahoo":{"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo\/yahoo-min.js"},"yui2-element-delegate":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element-delegate\/element-delegate-min.js"},"yui2-charts":{"type":"js","requires":["yui2-element","yui2-json","yui2-datasource","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/charts\/charts-min.js"},"yui2-slider":{"requires":["yui2-dragdrop"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/slider\/slider-min.js"},"yui2-selector":{"type":"js","requires":["yui2-yahoo","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/selector\/selector-min.js"},"yui2-yuitest":{"requires":["yui2-logger"],"type":"js","optional":["yui2-event-simulate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuitest\/yuitest-min.js"},"yui2-carousel":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/carousel\/carousel-min.js"},"yui2-autocomplete":{"requires":["yui2-dom","yui2-event","yui2-datasource"],"type":"js","optional":["yui2-connection","yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/autocomplete\/autocomplete-min.js"},"yui2-yahoo-dom-event":{"supersedes":["yui2-yahoo","yui2-event","yui2-dom"],"rollup":3,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo-dom-event\/yahoo-dom-event.js"},"yui2-dom":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dom\/dom-min.js"},"yui2-editor":{"supersedes":["yui2-simpleeditor"],"requires":["yui2-menu","yui2-element","yui2-button"],"type":"js","optional":["yui2-animation","yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/editor-min.js"},"core_filepicker":{"name":"core_filepicker","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Frepository%2Ffilepicker.js&rev=161","requires":["base","node","node-event-simulate","json","async-queue","io","yui2-button","yui2-container","yui2-layout","yui2-menu","yui2-treeview","yui2-dragdrop","yui2-cookie"]},"core_dock":{"name":"core_dock","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Fblocks%2Fdock.js&rev=161","requires":["base","node","event-custom","event-mouseenter","event-resize"]}},"groups":{"moodle":{"name":"moodle","base":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?moodle\/161\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"moodle\/161\/","patterns":{"moodle-":{"group":"moodle","configFn":moodleConfigFn},"root":"moodle"}},"local":{"name":"gallery","base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/gallery\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"gallery\/","patterns":{"gallery-":{"group":"gallery","configFn":galleryConfigFn},"root":"gallery"}}}};
+M.cfg = {"wwwroot":"http:\/\/moodle.bracu.ac.bd","sesskey":"tvOAnvczDm","loadingicon":"http:\/\/moodle.bracu.ac.bd\/theme\/image.php?theme=formfactor&image=i%2Floading_small&rev=162","themerev":"162","theme":"formfactor","jsrev":"161"};
+//]]>
+</script>
+<script type="text/javascript" src="./cse220-01-sp14  Recursion_files/javascript(1).php"></script>
+<script type="text/javascript" src="./cse220-01-sp14  Recursion_files/javascript(2).php"></script>
+<style type="text/css" id="GINGER_SOFTWARE_style">.GINGER_SOFTWARE_noMark { background : transparent; }  .GINGER_SOFTWARE_wrapper{ position: absolute; overflow: hidden; margin: 0px; padding: 0px; border: 0px solid transparent } .GINGER_SOFTWARE_contour { position : absolute; margin: 0px; }  .GINGER_SOFTWARE_richText { margin : 0px; padding-bottom: 3px; border-width: 0px; border-color: transparent; display: block; color: transparent; -webkit-text-fill-color: transparent; overflow: hidden; white-space: pre-wrap;}  .GINGER_SOFTWARE_inputWrapper .GINGER_SOFTWARE_richText {position: absolute;}  .GINGER_SOFTWARE_canvas { display:none; background-repeat:no-repeat;}  .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {border-top-left-radius:2px; border-top-right-radius:2px; border-bottom-right-radius:2px; border-bottom-left-radius:2px;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_synonym {background-image:url(data:image/gif;base64,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)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_noSuggestion {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_mark {position:relative; background-image:none!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightLeft { position : absolute; left:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightRight { position : absolute; right:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightTop { position : absolute; left:0px; right:0px; top:-2px; height:3px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightBottom { position : absolute; left:0px; right:0px; bottom:-2px; height:3px;}</style></head>
+<body id="page-mod-page-view" class=" path-mod path-mod-page safari dir-ltr lang-en yui-skin-sam yui3-skin-sam moodle-bracu-ac-bd pagelayout-incourse course-328 context-10818 cmid-5303 category-12 side-pre-only jsenabled" ginger_software_stylesheet="true" ginger_software_doc="true">
+<div class="skiplinks"><a class="skip" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#maincontent">Skip to main content</a></div>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<div id="page">
+
+
+    <div id="page-header" class="clearfix">
+		<div id="page-header-wrapper">
+
+	        		    	<h1 class="headermain">CSE 220: Data Structures (Spring '14) </h1>
+    		    <div class="headermenu">
+        			<div class="logininfo">You are logged in as <a href="http://moodle.bracu.ac.bd/user/profile.php?id=2747">MUHAIMINUR RAHMAN</a>  (<a href="http://moodle.bracu.ac.bd/login/logout.php?sesskey=tvOAnvczDm">Logout</a>)</div>	        	</div>
+	        
+	    </div>
+    </div>
+
+                  <ul id="page-navigation" class="clearfix">
+          <li>&nbsp;</li>
+        </ul>
+      	
+    	    <div class="navbar clearfix">
+    	    <div class="breadcrumb"><span class="accesshide">Page path</span><ul><li><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>My courses</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>Recursion</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="Page" href="./cse220-01-sp14  Recursion_files/cse220-01-sp14  Recursion.htm">Recursion</a></li></ul></div>
+            <div class="navbutton"> </div>
+        </div>
+    
+<!-- END OF HEADER -->
+
+<div id="page-content-wrapper">
+    <div id="page-content">
+        <div id="region-main-box">
+            <div id="region-post-box">
+
+                <div id="region-main-wrap">
+                    <div id="region-main">
+                        <div class="region-content">
+                            <span id="maincontent"></span><h2 id="pageheading" class="main">Recursion</h2><div class="box generalbox center clearfix"><div class="no-overflow"><style type="text/css"><!--
+  code { font-family: "courier new", courier, mono; font-size: 14px; }
+  tt   { font-family: "courier new", courier, mono; font-size: 14px; }
+  blockquote { margin-left: 40px; margin-right: 0px; }
+  blockquote pre { font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 15px 10px 15px; }
+  blockquote pre.small { font-family: "courier new", courier, mono; font-size: 11px; background-color:#ebebeb;}
+  blockquote pre.tiny { font-family: "courier new", courier, mono; font-size: 10px; background-color:#ebebeb;}
+  pre { margin-left: 0px; font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 10px 10px 15px; }
+--></style>
+<h1>Recursion</h1>
+<hr>
+<menu>
+<h2><a name="toc">Table of contents</a></h2>
+<ol type="I">
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#intro">Introduction</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defRec">Recursive definitions</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#progRec">Recursive programming</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#examples">Examples</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#issues">Issues/problems to watch out for</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#discussion">Discussion</a> </li>
+</ol> </menu> 
+<hr>
+<!-- Refs:  http://flint.cs.yale.edu/cs112/ http://www.cs.sfu.ca/~tamaras/recursion/ http://research.cs.queensu.ca/home/cisc101/fall2007/webnotes/recursion.html http://pages.cs.wisc.edu/~vernon/cs367/notes/6.RECURSION.html http://faculty.salisbury.edu/~ealu/COSC320/Lectures/recursion.htm http://www.cs.bu.edu/teaching/cpp/recursion.ps -->
+<h2><a name="intro">Introduction</a></h2>
+<p>Recursion is a way of <b>thinking about</b> problems, and a <b>method for solving</b> problems. The basic idea behind recursion is the following: it's a method that solves a problem by solving <em>smaller</em> (in size) versions of the same problem by breaking it down in smaller  subproblems. Recursion is very closely related to <b>mathematical  induction</b>.</p>
+<!--
+<p>Recursion is often used to search for a solution to a problem. For example: <ol>
+<li>Searching for a path out of a Maze
+<li>Towers of Hanoi </ol> -->
+<p>We'll start with <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defRec">recursive definitions</a>, which will lay the groundwork for <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#progRec">recursive programming</a>. We'll then look at a few prototypical <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#examples">examples</a> of  using recursion to solve problems. We'll finish with looking at  <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#issues">problems and issues</a> with recursion.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p>
+<h2><a name="defRec">Recursive definitions</a></h2>
+<p>We'll start <b>thinking recursively</b> with a few recursive definitions:</p>
+<ol>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defList">A list of numbers</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defFact">Factorial</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defFib">Fibonacci numbers</a> </li>
+</ol>
+<h3><a name="defList">List of numbers</a></h3>
+<p>Consider the  (<em>non-empty</em>) list of numbers <span style="background-color: #eeeedd;"> <tt>‹24, 88, 30, 37›</tt> </span>. How would we <em>define</em> such as list? The first one that comes to mind, at least at this point into this semester, would probably be the following:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>A <em>list</em> is one or more numbers, separated by commas. 
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The <b>recursive</b> way of thinking would produce the following definition:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>A <em>list</em> is either a: number
+             or, a: number comma <em>list</em>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>That is, a <em>list</em> is either a single number, or a number followed by a comma followed by a <em>list</em>. Two things to note here:</p>
+<ol>
+<li>We're using    <em>list</em> to define a <em>list</em>, which is to say that the    concept of a <em>list</em> is used to define itself! </li>
+<li>There is a <b>recursive</b> (the 2<sup>nd</sup>) part in the    definition, and a <b>non-recursive</b> (the 1<sup>st</sup>) part    in the definition,   which is called the <b>base case</b> or the <b>stopping   condition</b>. Without the base case, the recursion would never stop,   and we would end up with <em>infinite recursion</em>! </li>
+</ol>
+<p>With this  <b>recursive definition</b> of a <em>list</em>, we can now ask whether  <tt>‹24›</tt> is a <em>list</em> or not. It matches the  1<sup>st</sup> condition, which says that it's a single number, so it is indeed a <em>list</em>. What about <tt>‹24,88›</tt>? Here we have a number <tt>24</tt> followed by a <tt>comma</tt> followed <tt>‹88›</tt>; since we now know that  <tt>‹88›</tt> is indeed a <em>list</em>, we can rephrase it as such: we have a number <tt>24</tt> followed by a <tt>comma</tt> followed by a <em>list</em> <tt>‹88›</tt>, so it matches the 2<sup>nd</sup> definition, and so it is indeed a list. If we try a bit longer list of numbers <tt>‹24,88,30,37›</tt>, we see it does indeed match our definition.  Note how the recursive part of the <em>list</em> definition is used several times, terminating with the non-recursive part (the <em>base condition</em>, which stops the recursion).</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>number comma     <em>list</em>
+  24     ,    88, 30, 37
+
+             number comma   <em>list</em>
+               88     ,    30, 37
+
+                          number comma  <em>list</em>
+                             30    ,     37
+
+                                        number 
+                                         37
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The following shows a graphical view of tracing this recursive definition of a <em>list</em> using the sequence <tt>‹24,88,30,37›</tt>. This is often referred to as the <b>recursion tree</b> diagram.</p>
+<div align="CENTER"><img style="border: 0pt none;" src="./cse220-01-sp14  Recursion_files/recurList.png" alt="Figure: Tracing through a recursive List" height="373" width="736"></div>
+<p>&nbsp;</p>
+<h3><a name="defFact">Factorial</a></h3>
+<p>The <em>factorial</em> of a non-negative integer <tt>n</tt> is defined to be the product of all positive integers less than or equal to <tt>n</tt>. For example,  <tt>5! = 5 × 4 × 3 × 2 × 1 = 120</tt>. See  <a href="http://en.wikipedia.org/wiki/Factorial"> Wikipedia's entry on Factorial</a> for more info.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre><tt>1! = 1</tt>
+<tt>2! = 2 × 1</tt>
+<tt>3! = 3 × 2 × 1</tt>
+<tt>4! = 4 × 3 × 2 × 1</tt>
+<tt>5! = 5 × 4 × 3 × 2 × 1</tt>
+...
+and so on. 
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We can easily evaluate <tt>n!</tt> for any valid value of <tt>n</tt> by multiplying the values iteratively. However, there is a much more interesting recursive definition quite easily seen from the  <em>factorial</em> expressions: <tt>5!</tt> is nothing other than <tt>5 × 4!</tt>. If we know <tt>4!</tt>, we can trivially compute <tt>5!</tt>. <tt>4!</tt> on the other hand is <tt>4 × 3!</tt>, and so on until we have <tt>n! = n × (n - 1)!</tt>, with <tt>1! = 1</tt> as the base case. The mathematicians have however added the special case of <tt>0! = 1</tt> to make easier (yes, it does, believe it or not).  For the purposes of this discussion, we'll use both <tt>0! = 1</tt> and  <tt>1! = 1</tt> as the two base cases (we can always add <tt>2! = 2</tt> as another base, as long as we keep the necessary one — <tt>0!</tt>).</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>    -
+    | 1              if n = 0
+    | 1              if n = 1
+n! =|
+    | n × (n - 1)!   if n &gt; 1
+    -
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now we can expand <tt>5!</tt> recursively, stopping at the base condition.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre><tt>
+5! = 4 × 4!
+         4 × 3!
+             3 × 2!
+                 2 × 1!
+                     1
+</tt>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The recursion tree for <tt>5!</tt> shows the values as well.</p>
+<div align="CENTER"><img style="border: 0pt none;" src="./cse220-01-sp14  Recursion_files/recurFact.png" alt="Figure: Tracing through a factorial" height="263" width="300"></div>
+<p>&nbsp;</p>
+<h3><a name="defFib">Fibonacci numbers</a></h3>
+<p>The Fibonacci numbers are  <tt>‹0, 1, 1, 2, 3, 5, 8, 13, ...›</tt> (some define it  without the leading <tt>0</tt>, which is ok too). If we pay closer  attention, we see that each number, except for the first two, is  nothing but the sum of the previous two numbers. We can easily compute this iteratively, but let's stick with the recursive method. We already have the <b>recursive</b> part of the <b>recursive definition</b>, so all we need is the <b>non-recursive</b> part or the <b>base case</b>. The mathematicians have decided that the first two numbers in the sequence are <tt>0</tt> and <tt>1</tt>, which give us the base cases (notice the two base cases). See  <a href="http://en.wikipedia.org/wiki/Fibonacci_number"> Wikipedia's entry on Fibonacci number</a> for more info.</p>
+<p>Now we can write the recursive definition for any  Fibonacci number <tt>n ≥ 0</tt>.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>         -
+         | 0                          if n = 0
+         | 1                          if n = 1
+fib(n) = |
+         | fib(n-1) + fib(n-2)        n ≥ 2
+         -
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We can now compute <tt>fib(5)</tt> using this definition.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>                     fib(5)
+                      +
+                 /           \
+                /             \
+            fib(4)            fib(3)
+              +                 +
+         /        \          /      \
+        /          \        /        \
+       fib(3)     fib(2)  fib(2)   fib(1)
+        +           +        +
+     /    \       /   \     /  \
+    /      \     /     \   /    \
+   f       f    f      f   f    f
+   i       i    i      i   i    i
+   b       b    b      b   b    b
+  (2)     (1)  (1)    (0) (1)  (0)
+   +
+  / \
+ ....
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Before moving on, you should note how many times we're computing Fibonacci of 3 (<tt>fib(3)</tt> above), and Fibonacci of 2 (<tt>fib(2)</tt> above) and so on. This <b>redundancy in computation</b> leads to gross inefficiency, but something we can easily address to <b>Memoization</b>, which is the next topic we study.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p>
+<h2><a name="progRec">Recursive programming</a></h2>
+<p>A <b>recursive function</b> is one that calls itself, since it needs to solve the same problem, but on a smaller-sized input. In essence, a recursive function is a function that is defined in terms of itself.</p>
+<p>Let's start with computing the <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defFact">factorial</a>. We already have the recursive definition, so the question is how do we convert that a recursive method in Java that actually computes a factorial of a given non-negative integer. Here's the recursive definition again, along with the Java code. This is an example of <em>functional recursion</em>.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>    -
+    | 1              if n = 0
+    | 1              if n = 1
+n! =|
+    | n × (n - 1)!   if n &gt; 1
+    -
+</pre>
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="5">
+<pre>static int fact(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * fact(n - 1);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The first thing to note is how similar the code in <code>recursiveSum</code> is to the recursive definition. Once you have formulated the recursive  definition, the rest is usually quite trivial. This is indeed one of the greatest advantages of recursive programming.</p>
+<p>Let's now look an example of <em>structural recursion</em>, one that uses  a <b>recursive data structure</b>: we want to compute the sum of the <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defList">list of numbers</a> <tt>a = ‹3 8 2 1 13 4›</tt>. The "easiest"  (at least in Java, but certainly not in say Lisp or Scheme) way to solve it <b>iteratively</b>, as shown below.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>static int iterativeSum(LinkedList list) {
+    int sum = 0;
+    Node n = list.head;
+    while (n != null) {
+        sum = sum + n.item;
+        n = n.next;
+    }
+    return sum;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now since we already know that a <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defList">list of numbers</a> has a recursive definition, meaning that it's a recursive data structure, any problem defined on it must also have a simple recursive solution. Thinking recursively, we note the following:</p>
+<ol>
+<li>The sum of the numbers in a list is nothing but the sum of the      first number <b>plus</b> the sum of the <b>rest of the list</b>.      The problem of summing the <b>rest of the array</b> is      the same problem as the original, except that it's smaller by one      element! Ah, recursion at play. </li>
+<li>The shortest list has a single number, which has the sum equal the      number itself. Now we have a base case as well. Note that if we     allowed our list of numbers to be empty (we said non-empty when     defining it), then the base case will need to be adjusted as well:     the sum of an empty list is simply <tt>0</tt>. </li>
+</ol>
+<p>Note the key difference between the iterative and recursive approaches: <b>for each number in the list</b> vs <b>the rest of the list</b>.</p>
+<p>Now we can write the <b>recursive definition</b> of this problem, and using that, write the recursive method:</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>      -
+      | k                k is the only element
+sum = |
+      | k + sum(n.next)  otherwise
+      -
+
+
+static int recursiveSum(LinkedList list) {
+    if (list.size() == 1)
+        return list.head.item;
+    else {
+        return list.head.item + recursiveSum(list.head.next);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Again, note how similar the code in <code>recursiveSum</code> is to the recursive definition.</p>
+<p>Our familiar <em>linked list</em> is a <b>recursive data structure</b> since it's defined in terms of itself. The following is a recursive definition of a <tt>linked list</tt>:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>A linked list is either empty, or it is a node followed by another 
+linked list.
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We've of course seen this already when discussing <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defRec">recursive  definition</a> — this is almost exactly the same as our example of  <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defList">list of numbers</a>, with only base case differing  — we allow a linked list to be empty.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p>
+<h2><a name="examples">Examples</a></h2>
+<p>We look at the following examples:</p>
+<ol>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#stringLen">Length of a String</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#listLen">Length of a linked list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#seqSearch">Sequential search in a sequence</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#binSearch">Binary search in a sorted array</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#max1">Finding the maximum in a sequence (linear version)</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#max2">Finding the maximum in an array (binary version)</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#selection">Selection sort</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#insertion">Insertion sort</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#sumOfN">Sum of integers 1 through N</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#exp">Exponentiation – a<sup>n</sup></a> </li>
+</ol>
+<h3><a name="stringLen">Length of a String</a></h3>
+<p>A character string is a recursive structure: a string is either empty, or a character followed by the rest of the string. This implies that recursion is a <em>natural</em> way to solve string related problems. Let's take the case of computing the length of a string; the length of "abc" is 1 longer than the length of the rest of the string, which is "bc"; the length of "bc" is 1 longer than the length of "c"; and the length of "c" is 1 longer than the length of "", which is the empty string (and hence has a length  of 0). We now have our recursive case and a base case! An example of what is known as <em>structural recursion</em>.</p>
+<p>Since we're using Java's String class to represent a character string, The length of a Java String object has the following recursive formulation: the length is 1 <b>plus</b> the length of the <b>rest of the String</b>. In Java, the <code>String</code> provides a <code>substr</code> method to extract the rest of the String: <code>s.substring(1)</code> produces the substring from index 1 onwards. The recursion stops when the String is empty, which gives us the base case.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>         -
+         | 0             if string s is empty
+len(s) = |
+         | 1 + len(rest) otherwise
+         -
+
+
+static int strLength(String s) {
+    if (s.equals(""))
+        return 0;
+    else
+        return 1 + strLength(s.substring(1));
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>&nbsp;</p>
+<h3><a name="listLen">Length of a linked list</a></h3>
+<p>A linked list is also a recursive structure: a list is either empty, or a node followed by the rest of the list. We can also compute the length of a list recursively as follows: the the length of a list is 1 longer than the rest of the list! The empty list has a length of 0, which is our base case.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>         -
+         | 0             if l is an empty list
+len(l) = |
+         | 1 + len(rest) otherwise
+         -
+
+
+static int listLength(List l) {
+    if (l == null)
+        return 0;
+    else
+        return 1 + listLength(l.next);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>&nbsp;</p>
+<h3><a name="seqSearch">Sequential search in a sequence</a></h3>
+<p>How would you find something in a list? Well, look at the first node and check if the <tt>key</tt> is in that node. If so, done. Otherwise, check the <b>rest of the list</b> for the given <tt>key</tt>. If you search an empty list for any <tt>key</tt>, the answer is false, so that's our base case. This is almost exactly the same, at least in form, as finding the length of a linked list, and also an example of <em>structural recursion</em>.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                -
+                | false              if list l is empty
+                | true               if l.item = k
+contains(l,k) = |
+                | contains(l.next,k) otherwise
+                -
+
+
+static boolean contains(List l, int k) {
+    if (l == null)
+        return false;
+    else if (l.item == k)
+        return true;
+    else
+        return contains(l.next, k);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>What if the sequence is an array? How do we deal with the <b>rest of the array</b> part then? We can handle it in two ways:</p>
+<ol>
+<li>We can create a new array that contains a copy of the rest of the array,     and pass that instead to the next level of recursion. This is      of course very inefficient in Java, and to be avoided at all costs.     In programming languages which provide efficient <b>array slicing</b>,     this would be the way to go. </li>
+<li>We can maintain a <em>left</em> index, along with a reference to the     array, that is used to indicate where the beginning of the array is.     Initially, <tt>left = 0</tt>, meaning that the array begins at the     expected index of 0. Eventually, a value of <tt>l == a.length - 1</tt> means that the rest of the array is simply the last element, and then     <tt>l == a.length</tt> means that it's an 0-sized array.      For Java, this is by far the <b>preferred</b> method. </li>
+</ol>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                  -
+                  | false                    if l ≥ a.length
+                  | true                     if a[l] = k
+contains(a,l,k) = |
+                  | return contains(a,l+1,k) otherwise
+                  -
+
+
+static boolean contains(int[] a, int l, int k) {
+    if (l ≥ a.length)
+        return false;
+    else if (a[l] == k)
+        return true;
+    else
+        return contains(a, l + 1, k);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We start the search with <b><tt>contains(a, 0, key)</tt></b>, and then at each step, the rest of the array is given by advancing the left boundary  <tt>l</tt>.</p>
+<p>Instead of just a <b>yes/no</b> answer, what if we wanted the <b>position</b> of the key in the array? We can simply return <b>l</b> instead of <b>true</b> as the position if found, or use a sentinel <b>-1</b> instead of <b>false</b> if not.</p>
+<p>&nbsp;</p>
+<h3><a name="binSearch">Binary search in a sorted array</a></h3>
+<p>Given the abysmal performance of sequential search, we obviously want to use binary search whenever possible. Of course, the pre-conditions must be met  first:</p>
+<ol>
+<li>The sequence must support random access (an array that is) </li>
+<li>The data must be sorted </li>
+</ol>
+<p>Now we can formulate a recursive version of binary search of a <tt>key</tt> in an array <tt>data</tt> between the positions <tt>l</tt> and <tt>r</tt> (inclusive):</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>if the array is empty (if <tt>l &gt; r</tt> that is): 
+  return <tt>false</tt>
+else:
+  Find the position of the middle element: <tt>mid = (l + r)/2</tt>
+  If <tt>key == data[mid]</tt>, then return <tt>true</tt>
+  If <tt>key &gt; data[mid]</tt>, the search the right half <tt>data[mid+1..r]</tt>
+  If <tt>key &lt; data[mid]</tt>, the search the left half <tt>data[l..mid-1]</tt>
+end if
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now we can write the recursive definition, and translate that to Java.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                    -
+                    | false                 if l &gt; r
+                    | true                  if k = a[mid]
+contains(a,l,r,k) = |
+                    | contains(a,mid+1,r,k) if k &gt; a[mid]
+                    | contains(a,l,mid-1,k) if k &lt; a[mid]
+                    -
+
+
+static boolean contains(int[] a, int l, int r, int k) {
+    if (l &gt; r)
+        return false;
+    else {
+        int mid = (l + r)/2;
+        if (k == a[mid])
+            return true;
+        else if (k &gt; a[mid])
+            return contains(a, mid + 1, r, k);
+        else
+            return contains(a, l, mid - 1, k);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We start the search with <b><tt>contains(a, 0, a.length - 1, key)</tt></b>,  and then at each step, the rest of the array is given by one half of the  array – left or right, depending on the comparison of the key with the middle element.</p>
+<p>Instead of just a <b>yes/no</b> answer, what if we wanted the <b>position</b> of the key in the array? We can simply return <b>mid</b> as the position  instead of <b>true</b> if found, or use a sentinel <b>-1</b> instead of <b>false</b> if not.</p>
+<p>&nbsp;</p>
+<h3><a name="max1">Finding the maximum in a sequence (linear version)</a></h3>
+<p>Given a <i>sequence</i> of keys, our task is to find the <b>maximum key</b> in the sequence. This is of course trivially done iteratively (for a non-empty sequence): take the 1<sup>st</sup> one as maximum, and then iterate from   the 2<sup>nd</sup> to the end, exchanging the current with the maximum  if the current is larger than the maximum.</p>
+<p>Formulating this recursively: the maximum key in a sequence is the larger of the following two:</p>
+<ol>
+<li>the 1<sup>st</sup> key in the sequence </li>
+<li>the <b>maximum</b> key in the <b>rest</b> of the sequence </li>
+</ol>
+<p>Once we have (recursively) computed the maximum key in the rest of the sequence, we just have compare the 1<sup>st</sup> key with that, and we have our answer! The base is also trivial (for a non-empty sequence): the maximum key in a single-element sequence is the element itself.</p>
+<p>Since the <b>rest of the sequence</b> does not need random access, we can easily do this for a linked list or an array. Let's write it for a list first.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                -
+                | list.item                          if list.next = null
+findMax(list) = |
+                | max(list.item, findMax(list.next)) otherwise
+                 -
+
+static int findMax(Node l) {
+    if (l.next == null)
+        return l.item;
+    else {
+        int maxRest = findMax(l.next);
+        return Math.max(l.item, maxRest);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We find the maximum with <b><tt>findMax(head)</tt></b> (where <tt>head</tt> is the reference to the first node of the list), and then at each step, the rest of the array is given by advancing the head reference <tt>head</tt>.</p>
+<p>What if the sequence is an array? Well, then we use the same technique we've used before — use a left (and optionally right) boundary to <i>window</i> into the array.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                 -
+                 | a[l]                       if l =  r
+findMax(a,l,r) = |
+                 | max(a[l],findMax(a,l+1,r)) otherwise
+                 -
+
+
+static int findMax(int[] a, int l, int r) {
+    if (l = r)
+        return a[l];
+    else {
+        int maxRest = findMax(a, l + 1, r);
+        return Math.max(a[l], maxRest);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We find the maximum with <b><tt>findMax(a, 0, key)</tt></b>, and then at each step, the rest of the array is given by advancing the left boundary  <tt>l</tt>.</p>
+<p>&nbsp;</p>
+<h3><a name="max2">Finding the maximum in an array (binary version)</a></h3>
+<p>If our sequence is an array, we can also find the maximum by formulating the following recursive definition: the maximum key in an array is the larger of the following two:</p>
+<ol>
+<li>the maximum key in the <b>left half</b> of the array </li>
+<li>the maximum key in the <b>right half</b> of the array </li>
+</ol>
+<p>This will not produce an efficient version for linked lists, for the same reason binary search is not efficient for linked lists.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                 -
+                 | a[l]                    if l =  r
+findMax(a,l,r) = |
+                 | max(findMax(a,l,mid),
+                 |     findMax(a,mid+1,r)) otherwise
+                 -
+
+
+static int findMax(int[] a, int l, int r) {
+    if (l = r)
+        return a[l];
+    else {<br>        int mid = (l + r)/2;
+        int maxLeftHalf = findMax(a, l, mid);
+        int maxRightHalf = findMax(a, mid + 1, r);
+        return Math.max(maxLeftHalf, maxRightHalf);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We find the maximum with <b><tt>findMax(a, 0, key)</tt></b>, and then at each step, the array is divided into two halves. If you draw the recursion tree, you will see why I refer to it as the <i>binary version</i>.</p>
+<p>&nbsp;</p>
+<h3><a name="selection">Selection sort</a></h3>
+<p>How about sorting a sequence recursively? We know from our iterative discussion of selection sort that it does not require random access, so we'll look at recursive versions for both linked lists and arrays.</p>
+<p>The basic idea behind selection sort is the following: put  the 1<sup>st</sup> minimum in the 1<sup>st</sup> position,  the 2<sup>nd</sup> minimum in the 2<sup>nd</sup> position, the 3<sup>rd</sup> minimum in the 3<sup>rd</sup> position,  and so on until each key is placed in its position according to  its <i>rank</i>. To come up with a recursive formulation, the following observation is the key:</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>Once the 1<sup>st</sup> minimum in the 1<sup>st</sup> position, it will never 
+change its position. Now all we have to do is to sort the <b>rest of the 
+sequence</b> (from 2<sup>nd</sup> position onwards), and we'll have a sorted
+sequence. 
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now we can write the recursive definition for a linked list, and translate it to Java.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                   -
+                   | done                if list = null or list.next = null
+selectSort(list) = |
+                   | exchange the minimum key with list.item,
+                   |    and sort the rest of the list 
+                   |    with selectSort(list.next)
+                   -
+
+static void selectSort(Node l) {
+    if (l == null || l.next == null)
+        return;
+    else {
+        Node minNode = findMinNode(l);
+        swap(l, minNode);
+        selectSort(l.next);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We sort a list headed by <tt>head</tt> by calling  <tt>selectSort(head)</tt>. Note that we're not find the minimum key, but rather the node that <b>contains</b> the minimum key since we need to exchange the left key with the minimum one. We can write that iterative of course, but a recursive one is simply more fun. This is of course almost identical to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#max1">finding the maximum in a sequence</a>, with two  differences: we're find the minimum, and we're return the node that contains the minimum, not the actual minimum key.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                    -
+                    | list.item                   if list.next = null
+findMinNode(list) = |
+                    | get the node that contains the minimum in
+                    |   the rest with findMinNode(list.next)), and
+                    |   return either list.item or the other one
+                    |   depending on which one has the smaller key
+                    -
+
+static Node findMinNode(Node l) {
+    if (l.next == null)
+        return l;
+    else {
+        Node minNode = l;
+        Node minNodeRest = findMinNode(l.next);
+        if (minNodeRest.item &lt; l.item)
+            minNode = minNodeRest;
+
+        return minNode;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>If the sequence is an array, then we have to use the left (and optionally right) boundary to window into the array.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                    -
+                    | done                if l &gt;= r
+selectSort(a,l,r) = |
+                    | exchange the minimum key with a[l],
+                    |    and sort the rest of the array 
+                    |    with selectSort(a,l+1,r)
+                    -
+
+static void selectSort(int[] a, int l, int r) {
+    if (l &gt;= r)
+        return;
+    else {
+        Node minIndex = findMinIndex(a, l, r);
+        swap(a, l, minIndex);
+        selectSort(a, l + 1, r);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We sort an array <tt>a</tt> by calling  <tt>selectSort(a, 0, a.length - 1)</tt>. And we can write <tt>findMinIndex</tt> recursively of course, which is again almost exactly the same as either <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#max1">finding the maximum in a sequence</a>, or <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#max2">finding the maximum in an array</a> — we'll use the binary method just for illustration.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                      -
+                      | a[l]                     if l = r
+findMinIndex(a,l,r) = |
+                      | get the index of minimum in the rest with 
+                      |   findMinIndex(a,l+1,r)), and return either 
+                      |   l or the other one depending on which one 
+                      |   has the smaller key
+                      -
+
+static Node findMinIndex(int[] a, int l, int r) {
+    if (l == r)
+        return l;
+    else {
+        int mid = (l + r)/2;
+        Node minIndexLeft = findMinIndex(a, l, mid);
+        Node minIndexRight = findMinIndex(a, mid + 1, r);
+        int minIndex = minIndexLeft;
+        if (a[minIndexRight] &lt; a[minIndexLeft])
+            minIndex = minIndexRight;
+
+        return minIndex;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>&nbsp;</p>
+<h3><a name="insertion">Insertion sort</a></h3>
+<p>Insertion works by inserting each new key in a sorted array so that it is placed in its rightful position, which now extends the sorted array  by the new key. In the beginning, there is a single key in the array, which by definition is sorted. Then the second key arrives, which is then inserted into the already sorted array (of one key at this point), and now the sorted array has two keys. Then the third key arrives, which is inserted into the already sorted array, creating a sorted  array of 3 keys. And so on. Iteratively, it's a fairly simple operation. The question is how can we formulate this recursively. The following observation is the key to this recursive formulation:</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>Given an array of <tt>n</tt> keys, sort the first <tt>n-1</tt> keys and then 
+insert the <tt>n<sup>th</sup></tt> key in the sorted array such that all 
+<tt>n</tt> keys are now sorted.
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Note how the recursive part comes first, and then the <tt>n<sup>th</sup></tt> key is inserted (iteratively) into the sorted array. Unlike  <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#selection">recursive selection sort</a>, we're going from <b>right to left</b> in the recursive version of insertion sort.</p>
+<p>Note that we don't need random access, but need to be able to iterate in  both directions (reverse direction to insert the new key in the sorted partition). So,  if we're sorting a linked list using the insertion sort algorithm, the list must be doubly-linked.</p>
+<p>If sorting an array, we can formulate the solution as follows:</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>                    -
+                    | done                if l &gt;= r
+insertSort(a,l,r) = |
+                    | recursively sort the first n-1 keys using
+                    |    insertSort(a,l,r-1), and then insert the
+                    |    n<sup>th</sup> key (index <tt>r</tt> in
+                    |    case) such that the result is sorted.
+                    -
+
+static void insertSort(int[] a, int l, int r) {
+    if (l &gt;= r)
+        return;
+    else {
+        insertSort(a, l, r - 1);
+
+        // Now insert the r'th key by moving leftwards
+        Object key = a[r];      // save to avoid being overwritten
+        int j = r - 1;
+
+        // Shift left, making room for the key
+        while (j &gt;= 0 &amp;&amp; key &lt; data[j]) {
+            data[j + 1] = data[j];
+            j--;
+        }
+        // Now insert the key in the right position
+        data[j + 1] = key;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We sort an array <tt>a</tt> by calling  <tt>insertSort(a, 0, a.length - 1)</tt>.</p>
+<p>&nbsp;</p>
+<h3><a name="sumOfN">Sum of integers 1 through N</a></h3>
+<p>Computing the sum of the 1<sup>st</sup> N integers has a trivial iterative  solution. It is however instructive to see the recursive formulation. This is an example of <em>functional recursion</em>.</p>
+<p>The sum of the 1<sup>st</sup> <tt>N</tt> integers is <tt>N</tt> <b>plus</b> the sum of the 1<sup>st</sup> <tt>N-1</tt> integers. The  base case is when we sum only the first integer, namely when <tt>N = 1</tt>.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>      -
+      | 1              n = 1
+sum = |
+      | n + sum(n - 1) n &gt; 1
+      -
+</pre>
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>
+<pre>static int sumN(int n) {
+    if (n == 1)
+        return 1;
+    else
+        return n + sumN(n - 1);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>&nbsp;</p>
+<h3><a name="exp">Exponentiation – a<sup>n</sup></a></h3>
+<p>This is another example of <em>functional recursion</em>. To compute <tt>a<sup>n</sup></tt>, we can iteratively multiply <tt>a</tt> <tt>n</tt> times, and that's that. Thinking recursively,   <tt>a<sup>n</sup> = a × a<sup>n-1</sup></tt>, and  <tt>a<sup>n-1</sup> = a × a<sup>n-2</sup></tt>, and so on. The  recursion stops when the exponent <tt>n = 0</tt>, since by definition  <tt>a<sup>0</sup> = 1</tt>.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>     -
+     | 1          n = 0
+a<sup>n</sup> = |
+     | a × n <sup>n-1</sup>  n &gt; 0
+     -
+</pre>
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>
+<pre>static int exp(int a, int n) {
+    if (n == 0)
+        return 1;
+    else
+        return a * exp(a, n - 1);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>As it turns out, there is actually a much more efficient recursive  formulation for the exponentiation of a number. We start by noting that <tt>2<sup>8</sup> = 2<sup>4</sup> × 2<sup>4</sup></tt>, and that <tt>2<sup>7</sup> = 2<sup>3</sup> × 2<sup>3</sup> × 2</tt>. We can generalize that with the following recursive definition, and  its implementation.</p>
+<blockquote>
+<table bgcolor="#eeeedd">
+<tbody>
+<tr>
+<td>
+<pre>     -
+     | 1                      n = 0
+a<sup>n</sup> = |
+     | a<sup>n/2</sup> × a<sup>n/2</sup>             n is even
+     | a<sup>(n-1)/2</sup> × a<sup>(n-1)/2</sup> × a  n is odd
+     -
+
+
+static int exp(int a, int n) {
+    if (n == 0)
+        return 1;
+    else if (n % 2 == 0)
+        return exp(a, n/2) * exp(a, n/2);
+    else
+        return exp(a, (n - 1)/2) * exp(a, (n - 1)/2) * a;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Ok, but why would we care about this formulation over the more familiar one? If we solve for the running time, both solutions take the same time, so what is the benefit of this approach? Notice how we're computing the following expressions <b>twice</b>:</p>
+<ol>
+<li><tt>exp(a, n/2)</tt> </li>
+<li><tt>exp(a, (n - 1)/2)</tt> </li>
+</ol>
+<p>Why not compute it once, and then use the <b>result</b> twice (or as many times as needed)? We can, and as we'll find out, that'll give us a huge boost when we compute the running time of this algorithm. Here's the modified version.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>static int exp(int a, int n) {
+    if (n == 0)
+        return 1;
+    else if (n % 2 == 0) {
+        int tmp = exp(a, n/2);
+        return tmp * tmp;
+    } else {
+        int tmp = exp(a, (n - 1)/2);
+        return tmp * tmp * a;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>All we're doing is removing the <b>redundancy</b> in computations by saving the <b>intermediate</b> results in temporary variables. This is a simple case of a technique known as <b>Memoization</b>, which is the next topic we study. Remember that we've already seen such redundancy in recursive  computation — when computing the <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defFib">Fibonacci  numbers</a>.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p>
+<h2><a name="issues">Issues/problems to watch out for</a></h2>
+<h3><a name="redundantComp">Inefficient recursion</a></h3>
+<p>The recursive solution for <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#defFib">Fibonacci numbers</a> outlined in these notes shows massive <b>redundancy</b>, leading to very inefficient computation. The 1<sup>st</sup> recursive solution for  <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#exp">exponentiation</a> also shows how redundancy shows up in recursive programs. There are ways to avoid computing the same value more than once by <em>caching</em> the intermediate results, either using <b>Memoization</b> (a <em>top-down technique</em> — see next  lecture), or <b>Dynamic Programming</b> (a <em>bottom-up technique</em> — survive this semester to enjoy it in the next one).</p>
+<p>&nbsp;</p>
+<h3><a name="stackUsage">Space for activation frames</a></h3>
+<p>Each recursive method call requires that it's <b>activation record</b> be put on the system <em>call stack</em>. As the depth of recursion  gets larger and larger, it puts pressure on the system stack, and  the stack may potentially run out of space.</p>
+<p>&nbsp;</p>
+<h3><a name="infiniteRec">Infinite recursion</a></h3>
+<p>Ever forgot a base case? Or miss one of the base cases? You end up with infinite recursion, since there nothing stopping your recursion! Whenever you see a <b>Stack Overflow</b> error, check your recursion!</p>
+<p>&nbsp;</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p>
+<h2><a name="discussion">Discussion</a></h2>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#toc">Table of contents</a></p></div></div><div class="modified">Last modified: Wednesday, 17 October 2012, 09:10 AM</div>                        </div>
+                    </div>
+                </div>
+
+                                <div id="region-pre">
+                    <div class="region-content">
+                        <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#sb-1" class="skip-block">Skip Navigation</a><div id="inst4" class="block_navigation  block"><div class="header"><div class="title" id="yui_3_2_0_1_1397080101060250"><div class="block_action"><img class="block-hider-hide" alt="Hide Navigation block" title="Hide Navigation block" src="./cse220-01-sp14  Recursion_files/image.php"><img class="block-hider-show" alt="Show Navigation block" title="Show Navigation block" src="./cse220-01-sp14  Recursion_files/image(1).php"></div><h2>Navigation</h2></div></div><div class="content"><ul class="block_tree list"><li class="type_unknown depth_1 contains_branch"><p class="tree_item branch navigation_node"><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></p><ul><li class="type_setting depth_2 item_with_icon"><p class="tree_item leaf hasicon"><a title="My home" href="http://moodle.bracu.ac.bd/my/"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">My home</a></p></li>
+<li class="type_course depth_2 collapsed contains_branch"><p class="tree_item branch"><span title="BRAC University Courses">Site pages</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Blogs" href="http://moodle.bracu.ac.bd/blog/index.php?courseid=0"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Blogs</a></p></li>
+<li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Tags" href="http://moodle.bracu.ac.bd/tag/search.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Tags</a></p></li></ul></li>
+<li class="type_user depth_2 collapsed contains_branch"><p class="tree_item branch"><span>My profile</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="View profile" href="http://moodle.bracu.ac.bd/user/profile.php?id=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">View profile</a></p></li>
+<li class="type_custom depth_3 collapsed contains_branch"><p class="tree_item branch"><span>Forum posts</span></p><ul><li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Posts" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Posts</a></p></li>
+<li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Discussions" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&mode=discussions"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Discussions</a></p></li></ul></li>
+<li class="type_unknown depth_3 collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="View all of my entries" href="http://moodle.bracu.ac.bd/blog/index.php?userid=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">View all of my entries</a></p></li>
+<li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Add a new entry" href="http://moodle.bracu.ac.bd/blog/edit.php?action=add"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Add a new entry</a></p></li></ul></li>
+<li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Messages" href="http://moodle.bracu.ac.bd/message/index.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Messages</a></p></li>
+<li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="My private files" href="http://moodle.bracu.ac.bd/user/files.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">My private files</a></p></li></ul></li>
+<li class="type_system depth_2 contains_branch"><p class="tree_item branch canexpand"><span>My courses</span></p><ul><li class="type_course depth_3 contains_branch"><p class="tree_item branch canexpand"><a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></p><ul><li class="type_unknown depth_4 collapsed contains_branch"><p class="tree_item branch"><a title="Participants" href="http://moodle.bracu.ac.bd/user/index.php?id=328">Participants</a></p><ul><li class="type_custom depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="Blogs" href="http://moodle.bracu.ac.bd/blog/index.php?courseid=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Blogs</a></p></li>
+<li class="type_user depth_5 collapsed contains_branch"><p class="tree_item branch"><a title="MUHAIMINUR RAHMAN" href="http://moodle.bracu.ac.bd/user/view.php?id=2747&course=328">MUHAIMINUR RAHMAN</a></p><ul><li class="type_custom depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="View profile" href="http://moodle.bracu.ac.bd/user/view.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">View profile</a></p></li>
+<li class="type_custom depth_6 collapsed contains_branch"><p class="tree_item branch"><span>Forum posts</span></p><ul><li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Posts" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Posts</a></p></li>
+<li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Discussions" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&course=328&mode=discussions"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Discussions</a></p></li></ul></li>
+<li class="type_unknown depth_6 collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="View all of my entries" href="http://moodle.bracu.ac.bd/blog/index.php?userid=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">View all of my entries</a></p></li>
+<li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Add a new entry" href="http://moodle.bracu.ac.bd/blog/edit.php?action=add"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Add a new entry</a></p></li></ul></li>
+<li class="type_setting depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="Messages" href="http://moodle.bracu.ac.bd/message/index.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Messages</a></p></li>
+<li class="type_setting depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="My private files" href="http://moodle.bracu.ac.bd/user/files.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">My private files</a></p></li></ul></li></ul></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_1"><span>Course information</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_2"><span>Arrays and linked lists</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_3"><span>Stacks and Queues</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_4"><span>Searching and sorting</span></p></li>
+<li class="type_structure depth_4 contains_branch"><p class="tree_item branch canexpand"><span>Recursion</span></p><ul><li class="type_activity depth_5 item_with_icon current_branch"><p class="tree_item leaf hasicon active_tree_node"><a title="Page" href="./cse220-01-sp14  Recursion_files/cse220-01-sp14  Recursion.htm"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Recursion_files/image(3).php">Recursion</a></p></li>
+<li class="type_activity depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5304"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Recursion_files/image(4).php">Recursion (PDF)</a></p></li>
+<li class="type_activity depth_5 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_5"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5305"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Recursion_files/image(3).php">Memoization</a></p></li></ul></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_6"><span>Trees and Graphs</span></p></li></ul></li>
+<li class="type_course depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_7"><a title="CSE 260: Digital Logic Design  (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=341">cse260-01-sp14</a></p></li></ul></li></ul></li></ul></div></div><span id="sb-1" class="skip-block-to"></span><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5303#sb-2" class="skip-block">Skip Settings</a><div id="inst5" class="block_settings  block"><div class="header"><div class="title" id="yui_3_2_0_1_1397080101060270"><div class="block_action"><img class="block-hider-hide" alt="Hide Settings block" title="Hide Settings block" src="./cse220-01-sp14  Recursion_files/image.php"><img class="block-hider-show" alt="Show Settings block" title="Show Settings block" src="./cse220-01-sp14  Recursion_files/image(1).php"></div><h2>Settings</h2></div></div><div class="content"><div id="settingsnav" class="box block_tree_box"><ul class="block_tree list"><li class="type_course collapsed contains_branch"><p class="tree_item branch root_node"><span>Course administration</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Grades" href="http://moodle.bracu.ac.bd/grade/report/index.php?id=328"><img alt="" class="smallicon navicon" title="" src="./cse220-01-sp14  Recursion_files/image(5).php">Grades</a></p></li></ul></li>
+<li class="type_unknown collapsed contains_branch"><hr><p class="tree_item branch root_node" id="usersettings"><span>My profile settings</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Edit profile" href="http://moodle.bracu.ac.bd/user/edit.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Edit profile</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Change password" href="http://moodle.bracu.ac.bd/login/change_password.php?id=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Change password</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Security keys" href="http://moodle.bracu.ac.bd/user/managetoken.php?sesskey=tvOAnvczDm"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Security keys</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Messaging" href="http://moodle.bracu.ac.bd/message/edit.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Messaging</a></p></li>
+<li class="type_unknown collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Preferences" href="http://moodle.bracu.ac.bd/blog/preferences.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Preferences</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="External blogs" href="http://moodle.bracu.ac.bd/blog/external_blogs.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">External blogs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Register an external blog" href="http://moodle.bracu.ac.bd/blog/external_blog_edit.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Recursion_files/image(2).php">Register an external blog</a></p></li></ul></li></ul></li></ul></div></div></div><span id="sb-2" class="skip-block-to"></span>                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- START OF FOOTER -->
+        <div id="page-footer" class="clearfix">
+        <p class="helplink"></p>
+        <div class="logininfo">You are logged in as <a href="http://moodle.bracu.ac.bd/user/profile.php?id=2747">MUHAIMINUR RAHMAN</a>  (<a href="http://moodle.bracu.ac.bd/login/logout.php?sesskey=tvOAnvczDm">Logout</a>)</div><div class="homelink"><a href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></div>    </div>
+    </div>
+<script type="text/javascript" src="./cse220-01-sp14  Recursion_files/javascript(3).php"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"repository":{"add":"Add","back":"&laquo; Back","close":"Close","cleancache":"Clean my cache files","copying":"Copying","date":"Date","downloadsucc":"The file has been downloaded successfully","emptylist":"Empty list","error":"An unknown error occurred!","federatedsearch":"Federated search","filenotnull":"You must select a file to upload.","getfile":"Select this file","iconview":"View as icons","invalidjson":"Invalid JSON string","linkexternal":"Link external","listview":"View as list","loading":"Loading...","login":"Login","logout":"Logout","noenter":"Nothing entered","noresult":"No search result","manageurl":"Manage","popup":"Click \"Login\" button to login","preview":"Preview","refresh":"Refresh","save":"Save","saveas":"Save as","saved":"Saved","saving":"Saving","search":"Search","searching":"Search in","size":"Size","submit":"Submit","sync":"Sync","title":"Choose a file...","upload":"Upload this file","uploading":"Uploading...","xhtmlerror":"You are probably using XHTML strict header, some YUI Component doesn't work in this mode, please turn it off in moodle","chooselicense":"Choose license","author":"Author","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","norepositoriesexternalavailable":"Sorry, none of your current repositories can return external files.","nofilesattached":"No files attached","filepicker":"File picker","nofilesavailable":"No files available"},"moodle":{"cancel":"Cancel","help":"Help","ok":"OK","error":"Error","info":"Information","viewallcourses":"View all courses","yes":"Yes"},"block":{"addtodock":"Move this to the dock","undockitem":"Undock this item","undockall":"Undock all"},"langconfig":{"thisdirectionvertical":"btt"},"admin":{"confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var navtreeexpansions4 = [{"id":"expandable_branch_1","key":"4414","type":30},{"id":"expandable_branch_2","key":"4416","type":30},{"id":"expandable_branch_3","key":"4417","type":30},{"id":"expandable_branch_4","key":"4418","type":30},{"id":"expandable_branch_5","key":"5305","type":40},{"id":"expandable_branch_6","key":"4420","type":30},{"id":"expandable_branch_7","key":"341","type":20}];
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+YUI(M.yui.loader).use('node', function(Y) {
+M.util.load_flowplayer();
+setTimeout("fix_column_widths()", 20);
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"4","instance":"4","candock":false,"courselimit":"20","expansionlimit":0});
+})
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"5","instance":"5","candock":false});
+})
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navigation","preference":"block4hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+M.util.init_block_hider(Y, {"id":"inst5","title":"Settings","preference":"block5hidden","tooltipVisible":"Hide Settings block","tooltipHidden":"Show Settings block"});
+
+});
+//]]>
+</script>
+
+
+<div id="dock" class="dock dock_left_vertical nothingdocked"><div class="buttons_container" id="yui_3_2_0_1_139708010106039"><div class="dockeditem_container"></div><div class="controls"><img alt="Undock all" title="Undock all" src="./cse220-01-sp14  Recursion_files/image(6).php"></div></div></div><div style="display: none;"></div><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_contextMenuIFrame" scrolling="no" style="border: 0px solid; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_bubblesIFrame" scrolling="no" style="border: 0px solid; position: absolute; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><div id="GingerWidgetInfo" style="display:none;">{"version":"0.1.0.394","isExtension":true,"extensionName":"Chrome"}</div></body></html>

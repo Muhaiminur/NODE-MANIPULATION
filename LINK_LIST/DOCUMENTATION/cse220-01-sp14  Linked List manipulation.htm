@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0051)http://moodle.bracu.ac.bd/mod/page/view.php?id=5277 -->
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" class="yui3-js-enabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cse220-01-sp14: Linked List manipulation</title>
+    <link rel="shortcut icon" href="http://moodle.bracu.ac.bd/theme/image.php?theme=formfactor&image=favicon&rev=162&component=theme">
+    
+<meta name="keywords" content="moodle, cse220-01-sp14: Linked List manipulation">
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Linked List manipulation_files/yui_combo.php"><script type="text/javascript" src="./cse220-01-sp14  Linked List manipulation_files/yui_combo(1).php"></script><script type="text/javascript" src="./cse220-01-sp14  Linked List manipulation_files/yui_combo(2).php"></script>
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Linked List manipulation_files/yui_combo(3).php">
+<script id="yui_3_2_0_1_13924651887569" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Linked List manipulation_files/yui_combo(4).php"></script><script id="yui_3_2_0_1_139246518875610" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Linked List manipulation_files/javascript.php"></script><script id="yui_3_2_0_1_139246518875611" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Linked List manipulation_files/yui_combo(5).php"></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Linked List manipulation_files/styles.php">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {}; var moodleConfigFn = function(me) {var p = me.path, b = me.name.replace(/^moodle-/,'').split('-', 3), n = b.pop();if (/(skin|core)/.test(n)) {n = b.pop();me.type = 'css';};me.path = b.join('-')+'/'+n+'/'+n+'.'+me.type;}; var galleryConfigFn = function(me) {var p = me.path,v=M.yui.galleryversion,f;if(/-(skin|core)/.test(me.name)) {me.type = 'css';p = p.replace(/-(skin|core)/, '').replace(/\.js/, '.css').split('/'), f = p.pop().replace(/(\-(min|debug))/, '');if (/-skin/.test(me.name)) {p.splice(p.length,0,v,'assets','skins','sam', f);} else {p.splice(p.length,0,v,'assets', f);};} else {p = p.split('/'), f = p.pop();p.splice(p.length,0,v, f);};me.path = p.join('/');};
+M.yui.loader = {"base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/3.2.0\/build\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","insertBefore":"firstthemesheet","modules":{"yui2-event":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event\/event-min.js"},"yui2-animation":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/animation\/animation-min.js"},"yui2-swfstore":{"type":"js","requires":["yui2-element","yui2-cookie","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfstore\/swfstore-min.js"},"yui2-datatable":{"requires":["yui2-element","yui2-datasource"],"type":"js","optional":["yui2-calendar","yui2-dragdrop","yui2-paginator"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datatable\/datatable-min.js"},"yui2-swfdetect":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfdetect\/swfdetect-min.js"},"yui2-menu":{"requires":["yui2-containercore"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/menu\/menu-min.js"},"yui2-treeview":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-json","yui2-animation","yui2-calendar"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/treeview\/treeview-min.js"},"yui2-get":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/get\/get-min.js"},"yui2-progressbar":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/progressbar\/progressbar-min.js"},"yui2-uploader":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/uploader\/uploader-min.js"},"yui2-datasource":{"requires":["yui2-event"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datasource\/datasource-min.js"},"yui2-profiler":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profiler\/profiler-min.js"},"yui2-connection":{"supersedes":["yui2-connectioncore"],"requires":["yui2-event"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection-min.js"},"yui2-json":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/json\/json-min.js"},"yui2-datemath":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datemath\/datemath-min.js"},"yui2-calendar":{"supersedes":["yui2-datemath"],"requires":["yui2-event","yui2-dom"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/calendar\/calendar-min.js"},"yui2-simpleeditor":{"requires":["yui2-element"],"type":"js","optional":["yui2-containercore","yui2-menu","yui2-button","yui2-animation","yui2-dragdrop"],"pkg":"editor","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/simpleeditor-min.js"},"yui2-swf":{"supersedes":["yui2-swfdetect"],"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swf\/swf-min.js"},"yui2-event-simulate":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-simulate\/event-simulate-min.js"},"yui2-yuiloader-dom-event":{"supersedes":["yui2-yahoo","yui2-dom","yui2-event","yui2-get","yui2-yuiloader","yui2-yahoo-dom-event"],"rollup":5,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader-dom-event\/yuiloader-dom-event.js"},"yui2-storage":{"requires":["yui2-yahoo","yui2-event","yui2-cookie"],"type":"js","optional":["yui2-swfstore"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/storage\/storage-min.js"},"yui2-container":{"supersedes":["yui2-containercore"],"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-dragdrop","yui2-animation","yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container-min.js"},"yui2-profilerviewer":{"requires":["yui2-profiler","yui2-yuiloader","yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profilerviewer\/profilerviewer-min.js"},"yui2-imagecropper":{"requires":["yui2-dragdrop","yui2-element","yui2-resize"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imagecropper\/imagecropper-min.js"},"yui2-paginator":{"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/paginator\/paginator-min.js"},"yui2-tabview":{"requires":["yui2-element"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/tabview\/tabview-min.js"},"yui2-layout":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation","yui2-dragdrop","yui2-resize","yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/layout\/layout-min.js"},"yui2-imageloader":{"type":"js","requires":["yui2-event","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imageloader\/imageloader-min.js"},"yui2-containercore":{"requires":["yui2-dom","yui2-event"],"type":"js","pkg":"container","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container_core-min.js"},"yui2-event-mouseenter":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-mouseenter\/event-mouseenter-min.js"},"yui2-logger":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/logger\/logger-min.js"},"yui2-cookie":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/cookie\/cookie-min.js"},"yui2-stylesheet":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/stylesheet\/stylesheet-min.js"},"yui2-connectioncore":{"requires":["yui2-event"],"type":"js","pkg":"connection","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection_core-min.js"},"yui2-utilities":{"supersedes":["yui2-yahoo","yui2-event","yui2-dragdrop","yui2-animation","yui2-dom","yui2-connection","yui2-element","yui2-yahoo-dom-event","yui2-get","yui2-yuiloader","yui2-yuiloader-dom-event"],"rollup":8,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/utilities\/utilities.js"},"yui2-dragdrop":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dragdrop\/dragdrop-min.js"},"yui2-colorpicker":{"requires":["yui2-slider","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/colorpicker\/colorpicker-min.js"},"yui2-event-delegate":{"requires":["yui2-event"],"type":"js","optional":["yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-delegate\/event-delegate-min.js"},"yui2-yuiloader":{"type":"js","supersedes":["yui2-yahoo","yui2-get"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader\/yuiloader-min.js"},"yui2-button":{"requires":["yui2-element"],"type":"js","optional":["yui2-menu"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/button\/button-min.js"},"yui2-resize":{"requires":["yui2-dragdrop","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/resize\/resize-min.js"},"yui2-element":{"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-event-mouseenter","yui2-event-delegate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element\/element-min.js"},"yui2-history":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/history\/history-min.js"},"yui2-yahoo":{"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo\/yahoo-min.js"},"yui2-element-delegate":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element-delegate\/element-delegate-min.js"},"yui2-charts":{"type":"js","requires":["yui2-element","yui2-json","yui2-datasource","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/charts\/charts-min.js"},"yui2-slider":{"requires":["yui2-dragdrop"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/slider\/slider-min.js"},"yui2-selector":{"type":"js","requires":["yui2-yahoo","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/selector\/selector-min.js"},"yui2-yuitest":{"requires":["yui2-logger"],"type":"js","optional":["yui2-event-simulate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuitest\/yuitest-min.js"},"yui2-carousel":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/carousel\/carousel-min.js"},"yui2-autocomplete":{"requires":["yui2-dom","yui2-event","yui2-datasource"],"type":"js","optional":["yui2-connection","yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/autocomplete\/autocomplete-min.js"},"yui2-yahoo-dom-event":{"supersedes":["yui2-yahoo","yui2-event","yui2-dom"],"rollup":3,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo-dom-event\/yahoo-dom-event.js"},"yui2-dom":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dom\/dom-min.js"},"yui2-editor":{"supersedes":["yui2-simpleeditor"],"requires":["yui2-menu","yui2-element","yui2-button"],"type":"js","optional":["yui2-animation","yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/editor-min.js"},"core_filepicker":{"name":"core_filepicker","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Frepository%2Ffilepicker.js&rev=161","requires":["base","node","node-event-simulate","json","async-queue","io","yui2-button","yui2-container","yui2-layout","yui2-menu","yui2-treeview","yui2-dragdrop","yui2-cookie"]},"core_dock":{"name":"core_dock","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Fblocks%2Fdock.js&rev=161","requires":["base","node","event-custom","event-mouseenter","event-resize"]}},"groups":{"moodle":{"name":"moodle","base":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?moodle\/161\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"moodle\/161\/","patterns":{"moodle-":{"group":"moodle","configFn":moodleConfigFn},"root":"moodle"}},"local":{"name":"gallery","base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/gallery\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"gallery\/","patterns":{"gallery-":{"group":"gallery","configFn":galleryConfigFn},"root":"gallery"}}}};
+M.cfg = {"wwwroot":"http:\/\/moodle.bracu.ac.bd","sesskey":"So7fihzE8Y","loadingicon":"http:\/\/moodle.bracu.ac.bd\/theme\/image.php?theme=formfactor&image=i%2Floading_small&rev=162","themerev":"162","theme":"formfactor","jsrev":"161"};
+//]]>
+</script>
+<script type="text/javascript" src="./cse220-01-sp14  Linked List manipulation_files/javascript(1).php"></script>
+<script type="text/javascript" src="./cse220-01-sp14  Linked List manipulation_files/javascript(2).php"></script>
+<script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script><meta name="document_iterator.js"><meta name="find_proxy.js"><meta name="get_html_text.js"><meta name="global_constants.js"><meta name="name_injection_builder.js"><meta name="number_injection_builder.js"><meta name="menu_injection_builder.js"><meta name="string_finder.js"><meta name="change_sink.js"><style type="text/css" id="GINGER_SOFTWARE_style">.GINGER_SOFTWARE_noMark { background : transparent; }  .GINGER_SOFTWARE_wrapper{ position: absolute; overflow: hidden; margin: 0px; padding: 0px; border: 0px solid transparent } .GINGER_SOFTWARE_contour { position : absolute; margin: 0px; }  .GINGER_SOFTWARE_richText { margin : 0px; padding-bottom: 3px; border-width: 0px; border-color: transparent; display: block; color: transparent; -webkit-text-fill-color: transparent; overflow: hidden; white-space: pre-wrap;}  .GINGER_SOFTWARE_inputWrapper .GINGER_SOFTWARE_richText {position: absolute;}  .GINGER_SOFTWARE_canvas { display:none; background-repeat:no-repeat;}  .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {border-top-left-radius:2px; border-top-right-radius:2px; border-bottom-right-radius:2px; border-bottom-left-radius:2px;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {background-image:url(data:image/gif;base64,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)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_synonym {background-image:url(data:image/gif;base64,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)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_noSuggestion {background-image:url(data:image/gif;base64,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)!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_mark {position:relative; background-image:none!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightLeft { position : absolute; left:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightRight { position : absolute; right:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightTop { position : absolute; left:0px; right:0px; top:-2px; height:3px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightBottom { position : absolute; left:0px; right:0px; bottom:-2px; height:3px;}</style></head>
+<body id="page-mod-page-view" class=" path-mod path-mod-page safari dir-ltr lang-en yui-skin-sam yui3-skin-sam moodle-bracu-ac-bd pagelayout-incourse course-328 context-10791 cmid-5277 category-12 side-pre-only jsenabled" ginger_software_stylesheet="true" ginger_software_doc="true">
+<div class="skiplinks"><a class="skip" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5277#maincontent">Skip to main content</a></div>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<div id="page">
+
+
+    <div id="page-header" class="clearfix">
+		<div id="page-header-wrapper">
+
+	        		    	<h1 class="headermain">CSE 220: Data Structures (Spring '14) </h1>
+    		    <div class="headermenu">
+        			<div class="logininfo">You are currently using guest access (<a href="https://moodle.bracu.ac.bd/login/index.php">Login</a>)</div>	        	</div>
+	        
+	    </div>
+    </div>
+
+                  <ul id="page-navigation" class="clearfix">
+          <li>&nbsp;</li>
+        </ul>
+      	
+    	    <div class="navbar clearfix">
+    	    <div class="breadcrumb"><span class="accesshide">Page path</span><ul><li><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>Courses</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="Spring 2014" href="http://moodle.bracu.ac.bd/course/category.php?id=12">Spring 2014</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>Arrays and linked lists</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="Page" href="./cse220-01-sp14  Linked List manipulation_files/cse220-01-sp14  Linked List manipulation.htm">Linked List manipulation</a></li></ul></div>
+            <div class="navbutton"> </div>
+        </div>
+    
+<!-- END OF HEADER -->
+
+<div id="page-content-wrapper">
+    <div id="page-content">
+        <div id="region-main-box">
+            <div id="region-post-box">
+
+                <div id="region-main-wrap">
+                    <div id="region-main">
+                        <div class="region-content">
+                            <span id="maincontent"></span><h2 id="pageheading" class="main">Linked List manipulation</h2><div class="box generalbox center clearfix"><div class="no-overflow"><style type="text/css"><!--
+  code { font-family: "courier new", courier, mono; font-size: 14px; }
+  tt   { font-family: "courier new", courier, mono; font-size: 14px; }
+  blockquote { margin-left: 40px; margin-right: 0px; }
+  blockquote pre { font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 15px 10px 15px; }
+  blockquote pre.small { font-family: "courier new", courier, mono; font-size: 11px; background-color:#ebebeb;}
+  blockquote pre.tiny { font-family: "courier new", courier, mono; font-size: 10px; background-color:#ebebeb;}
+  pre { margin-left: 0px; font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 10px 10px 15px; }
+--></style>
+<h1>Linked lists in Java</h1>
+<hr>
+<h2><a name="toc">Table of contents</a></h2>
+<ol>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#create">Creating a list of elements</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#listiter">Iteration over the elements in a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#count">Counting the number of elements in a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#get">Getting an element given the index into a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#set">Setting an element given the index into a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#search">Searching for an element in a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#insert">Inserting an element into a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#remove">Removing an element from a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#copy">Copying a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#reverse">Reversing a list</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#rotateLeft">Rotating a list left</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#rotateRight">Rotating a list right</a> </li>
+</ol> 
+<hr>
+<h2><a name="intro">Introduction</a></h2>
+<p>When studying Java's built-in array type, we were quite annoyed by the  limitations of these arrays:</p>
+<ul>
+<li><em>fixed capacity</em>: once created, an array cannot be resized. The only way to "resize" is to create a larger new array, copy the elements from the original array into the new one, and then change the reference to the new one. Very inefficient, but of course we can use a bit of intelligence to make it a bit better (eg., double the space each time instead of adding just the required amount, etc). </li>
+<li><em>shifting elements in insert/remove</em>: since we do not allow <em>gaps</em> in the array, inserting a new element requires that we shift all the subsequent elements right to create a <em>hole</em> where the new element is placed. In the worst case, we "disturb" every slot in the array when we insert in the beginning of the array!
+<p>Removing may also require shifting to <em>plug</em> the hole left by the removed element. If the ordering of the elements does not not matter, we can avoid shifting by replacing the removed element with the element in the last slot (and then treating the last slot as empty).</p>
+</li>
+</ul>
+<p>The answer to these problems is the <em>linked list</em> data structure, which is a sequence of <em>nodes</em> connected by <em>links</em>. The links allow inserting new nodes anywhere in the list or to remove an  existing node from the list without having to disturb ther rest of the list (the only nodes affected are the ones adjacent to the node being inserted or removed). Since we can extend  the list one node at a time, we can also resize a list until we run out of resources.  However, we'll find out soon enough that what we lose in the process  — random access, and space! Linked list is a sequence container that supports sequential access only, and requires additional space for at least  <code>n</code> references for the links.</p>
+<p>We maintain a linked list by referring to the first node in the list,  conventionally called the <em>head</em> reference. All the other nodes can then be reached by traversing the list, starting from the  <em>head</em>. An empty list is represented by setting the head reference to the null. Given a head reference to a list, how do you count the number of nodes in the list? You have to iterate over the nodes, starting from head, and count until you reach the end.</p>
+<p>Figure <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#fig1">1</a> shows an empty, a single-element,  and a 4-element <b>head-referenced singly-linked list</b>.</p>
+<p align="center"><a name="fig1"> </a></p>
+<table width="100%">
+<caption align="bottom"><strong>Figure 1</strong>:    Example of head-referenced lists: empty, 1-element, and 4-element lists </caption> 
+<tbody>
+<tr>
+<td align="center" valign="top"><img src="./cse220-01-sp14  Linked List manipulation_files/Canvas 3b.png" alt="fig1" width="650"></td>
+</tr>
+</tbody>
+</table>
+<p align="center"><a name="fig1"> </a></p>
+<p><a name="fig1"> As I mentioned earlier, a linked list is a sequence of nodes. To put anything (primitive type or object reference) in the list, we must first put this "thing" in a node, and then put the node in the list. Compare this with an array – we simply put the "thing" (our primitive type or object reference) directly into the array slot, without the need for any extra  scaffolding. Our <code>Node</code> class is quite simple — it contains element (an object reference if we have a list of objects), and a reference to the <em>next</em> node in the list: </a></p>
+<blockquote><a name="fig1"> 
+<table>
+<tbody>
+<tr>
+<td>
+<pre>public class Node {
+    // The element that we want to put in the list
+    public Object element;
+    // The reference to the next node in the list
+    public Node next;
+    
+    /**
+     * Creates a new node with given element and next node reference.
+     *
+     * @param e the element to put in the node
+     * @param n the next node in the list, which may be null
+     */
+    public Node(Object e, Node n) {
+        element = e;
+        next = n;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</a></blockquote>
+<p><a name="fig1"> This allows you a create a <em>singly-linked</em> list, and as a result, we can only move <em>forward</em> in the list by following the <em>next</em> links. To be able to move <em>backward</em> as well, we'll have to add another reference to the <em>previous</em> node, increasing the space  usage even more. </a></p>
+<p><a name="fig1">Now we look at the typical list manipulations that we're discussing in class this week. See the link to a complete implementation for you to  play with at the end of this document.</a></p>
+<p><a name="fig1"> </a></p>
+<p>&nbsp;</p>
+<p><a name="fig1"> Back to </a><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="create">Creating a list of elements</a></h2>
+<p>To create an empty list, referenced by <em>header</em>:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>    Node header = null;      // empty list
+</pre>
+</td>
+<td align="center"><img src="./cse220-01-sp14  Linked List manipulation_files/Canvas 1a.png" width="40%"></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>A list with just one String element ("L"):</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>    Node header = new Node("L", null);
+</pre>
+</td>
+<td align="center"><img src="./cse220-01-sp14  Linked List manipulation_files/Canvas 2a.png" width="40%"></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="listiter">Iterating over the elements</a></h2>
+<p>To iterate over the elements of a list, we start at the <em>head</em> node, and then advance one node at a time. For example, the following prints out each element (stored within the nodes) in the list.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>Node n = header;
+while (n != null) {
+    System.out.println(n.element);
+    n = n.next;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>You can use a for loop as well of course.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>for (Node n = header; n != null; n = n.next)
+    System.out.println(n.element);
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="count">Counting the number of elements in a list</a></h2>
+<p>reference to the null. Given a head reference to a list, how can you count the number of elements in the list? You have to iterate over the  nodes, starting from head, and count until you reach the end.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Counts the number of nodes in the given list.
+ *
+ * @param head reference to the header node of the list
+ * @return the number of nodes in the list
+ */
+public static int count(Node head) {
+    int count = 0;
+    for (Node n = head; n != null; n = n.next)
+        count++;
+
+    return count;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="get">Getting an element given the index into a list</a></h2>
+<p>It's useful to be able to extract an element given the index into a linked list (the index works the same way as for arrays – it goes from <tt>0</tt> to <tt>size-1</tt>). Since a linked list does not support  random access, we have to scan the list to find the node at the given index, and then get the element within that node. Since we may not know the length (same as what we call size) of the list, we have to check if  the index is within bounds.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns the element at the given index in the given list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param index the index of the element to get
+ * @return the element at the given index, or null if the index is out
+ *         of bounds.
+ */
+public static Object get(Node head, int index) {
+    if (index &lt; 0)
+        return null;                    // invalid index.
+
+    int i = 0;
+    for (Node n = head; n != null; n = n.next) {
+        if (i == index)
+            return n.element;
+        else
+           i++;
+    }
+    return null;                        // index out of bounds.
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>If we know the number of elements in the list (ie., the <em>size</em>), then it's much easier.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns the element at the given index in the given list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the element to get
+ * @return the element at the given index, or null if the index is out
+ *         of bounds.
+ */
+public static Object get(Node head, int size, int index) {
+    if (index &lt; 0 || index &gt;= size)
+        return null;                    // invalid index.
+
+    Node n = head;
+    for (int i = 0; i &lt; index; i++, n = n.next)
+        ;
+            
+    return n.element;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>It's typical in most applications to write a method to get the node at a given index, so that we can get the element by first getting the node, and the return the element within. We define a  <a name="nodeAt"><code>nodeAt</code></a> method to return the node at  the given index.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns the node at the given index in the given list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the node to get
+ * @return the node at the given index, or null if the index is out
+ *         of bounds.
+ */
+public static Node nodeAt(Node head, int size, int index) {
+    if (index &lt; 0 || index &gt;= size)
+        return null;                    // invalid index.
+
+    Node n = head;
+    for (int i = 0; i &lt; index; i++, n = n.next)
+        ;
+            
+    return n;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>With this method, it's trivial to write the <code>get</code> method.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns the element at the given index in the given list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the element to get
+ * @return the element at the given index, or null if the index is out
+ *         of bounds.
+ */
+public static Object get(Node head, int size, int index) {
+    Node node = nodeAt(head, size, index);
+    if (node == null)
+        return null;                    // invalid index.
+    else
+        return node.element;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="set">Setting an element given the index into a list</a></h2>
+<p>Setting the element at the given index (also called <em>updating</em> the element) is as simple as <code>get</code> using <code>nodeAt</code> method.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Sets the element to the given one at the given index in the given list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the element to update
+ * @param elem  the element to update the value with
+ * @return the old element at index if valid, or null if the index is out
+ *         of bounds.
+ */
+public static Object set(Node head, int size, int index, Object elem) {
+    Node node = nodeAt(head, size, index);
+    if (node == null)
+        return null;                    // invalid index.
+    else {
+        Object oldElem = node.element;
+        node.element = elem;
+        return oldElem;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="search">Searching for an element in a list</a></h2>
+<p>Searching for an element in a list can be done by sequentially searching through the list. There are two typical variants: return the index  of the given element (<code>indexOf</code>), or return true if the element  exists (<code>contains</code>). Both of these require that we walk through the list and check for the existence of the given element.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns the index of the element in the list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param elem  the element to find the index of
+ * @return the index of the element is found, or -1 otherwise
+ */
+public static int indexOf(Node head, int size, Object elem) {
+    int i = 0;
+    for (Node n = head; n != null; n = n.next, i++)
+        if (n.element.equals(elem))
+            return i;
+
+    return -1;                          // Not found
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The other variant returns true if the element is found, or false otherwise.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns true if the element exists in the list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param elem  the element to find the index of
+ * @return true if the element is found, or false otherwise
+ */
+public static boolean contains(Node head, int size, Object elem) {
+    int i = 0;
+    for (Node n = head; n != null; n = n.next, i++)
+        if (n.element.equals(elem))
+            return true;
+
+    return false;                               // Not found
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>You should note that we can easily use one of the two methods to define the other instead of writing both! We can rewrite <code>contains</code> using <code>indexOf</code> or vice-versa quite trivally.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Returns true if the element exists in the list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param elem  the element to find the index of
+ * @return true if the element is found, or false otherwise
+ */
+public static boolean contains(Node head, int size, Object elem) {
+    int index = indexOf(head, size, elem);
+    if (index &gt;= 0)
+        return true;
+    else
+        return false;
+
+    // The "if ... else" block can also be written as:
+    // return (index &gt;= 0) ? true : false;
+    // or even simpler as
+    // return index &gt;= 0;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="insert">Inserting an element into a list</a></h2>
+<p>There are three places in a list where we can insert a new element: in the beginning ("head" changes), in the middle, and at the end. To insert a new node in the list, you need the reference to the  <em>predecessor</em> to link in the new node. There is one <em>special case</em> however — inserting a new node in the beginning of the list, because the <em>head</em> node does not have a predecessor.  Inserting in the beginning has an important <em>side-effect</em> — it changes the head reference!  Inserting in the middle or at the end are the same — we first find  the predecessor node, and link in the new node with the given element. This <em>special case</em> of inserting in the beginning of the list can be avoided by the use of <em>dummy header</em> node (also called a <em>sentinel</em> node). More on this later (see the notes on <em>dummy head-referenced doubly-linked  circular list</em>).</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Inserts the new element at the given index into the list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the newly inserted element
+ * @param elem  the new element to insert at the given index
+ * @return the reference to the header node, which will change when 
+ *         inserting in the beginning.
+ * @exception IndexOutOfBoundsException if the index is out-of-bounds.
+ */
+public static Node insert(Node head, int size, Object elem, int index) {
+    // Check for invalid index first. Should be between 0 and size (note:
+    // note size-1, since we can insert it *after* the tail node (tail 
+    // node has an index of size-1).
+    if (index &lt; 0 || index &gt; size)
+        throw new IndexOutOfBoundsExceptionException();
+
+    // Create the new node to hold the element in the list
+    Node newNode = new Node(elem, null);
+    
+    // Remember the special case -- in the beginning of the list, when
+    // the head reference changes.
+    if (index == 0) {
+        newNode.next = head;
+        head = newNode;
+    } else {
+        // get the predecessor node first
+        Node pred = nodeAt(index - 1);
+        newNode.next = pred.next;
+        pred.next = newNode;
+    }
+    return head;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>If there was also a <em>tail</em> reference, in addition to <em>head</em>, <em>appending</em> to the list is very fast — it avoids having to scan the entire list until the <em>tail</em> node (the predecessor in  this case) is found.</p>
+<p>One thing to note that we must have a reference to the  <em>predecessor</em> node (unless we're adding to the beginning of the list, in which case the <em>head</em> reference changes), so it's  often easier to write a method <code>insertAfter</code> that takes a new element to add after a given predecessor node.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Inserts the new element after the specified node in the list.
+ *
+ * @param p    the node after which the new element is to be added
+ * @param elem the new element to insert after the specified node
+ * @return the reference to the newly added node
+ */
+public static Node insertAfter(Node p, Object elem) {
+    // Create the new node to hold the element in the list
+    Node n = new Node(elem, null);
+
+    // Now add it after the predecessor `p'
+    Node q = p.next;            // q will refer to the next node 
+    n.next = q;
+    p.next = n;
+
+    // Done!
+    return n;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Except for the case of inserting a new element in the beginning of the list (a <em>special case</em>), we can simply find the predecessor node, and add the new element using <code>insertAfter</code> method.</p>
+<p>Figure <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#fig2">2</a> shows the steps in inserting a new node in a list, given a predecessor node.</p>
+<p align="center"><a name="fig2"> </a></p>
+<table width="100%">
+<caption align="bottom"><strong>Figure 2</strong>:    Inserting a new element "S" into the list</caption> 
+<tbody>
+<tr>
+<td align="center"><img src="./cse220-01-sp14  Linked List manipulation_files/Canvas 4k.png" alt="fig2" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<p align="center"><a name="fig2"> </a></p>
+<p><a name="fig2"> Back to </a><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="remove">Removing an element from a list</a></h2>
+<p>Removing an element from the list is done by removing the node that  contains the element. If we only know the element that we want to remove, then we have to sequentially search the list to find the node which contains the element (if it exists in the list that is); or else, we may already have a reference to the node which contains the element  to remove; or, we have an index of the element in the list. Just like inserting a new node in a list, removing requires that you have the reference to the predecessor node. And just like in insertion, removing  the 1<sup>st</sup> node in the list is a <em>special case</em> — it does not have a predecessor, and removing it has the side-effect of changing head! We've already seen this particular special — when inserting a new element in the beginning of the list. And, this special <em>special case</em> of removing the last node from a single-element list  can also be avoided by the use of <em>dummy header</em> node.</p>
+<p>&nbsp;</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Removes the element at the given index in the list.
+ *
+ * @param head  the reference to the header node of the list
+ * @param size  the number of elements in the list
+ * @param index the index of the element to remove
+ * @return the reference to the header node, which will change when 
+ *         removing the element at the beginning.
+ * @exception IndexOutOfBoundsException if the index is out-of-bounds.
+ */
+public static Node remove(Node head, int size, int index) {
+    // Check for invalid index first. Should be between 0 and size-1.
+    if (index &lt; 0 || index &gt;= size)
+        throw new IndexOutOfBoundsException();
+
+    // Reference to the removed node.
+    Node removedNode = null;
+
+    // Remember the special case -- from the beginning of the list, when
+    // the head reference changes.
+    if (index == 0) {
+        removedNode = head;
+        head = head.next;
+    } else {
+        // get the predecessor node first
+        Node pred = nodeAt(index - 1);
+        removedNode = pred.next;
+        pred.next = removedNode.next;
+    }
+    
+    // Help the GC
+    removedNode.element = null;
+    removedNode.next = null;
+
+    return head;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Figure <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#fig3">3</a> shows the steps in removing a specific node a list, given its reference.</p>
+<p align="center"><a name="fig3"> </a></p>
+<table width="100%">
+<caption align="bottom"><strong>Figure 3</strong>:    Removing the node containing element "S" from the list</caption> 
+<tbody>
+<tr>
+<td align="center"><img src="./cse220-01-sp14  Linked List manipulation_files/Canvas 5g.png" alt="fig3" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<p align="center"><a name="fig3"> </a></p>
+<p><a name="fig3"> Back to </a><a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="copy">Copying a list</a></h2>
+<p>Copying the elements of a <em>source</em> list to <em>destination</em> list  is simply a matter of iterating over the elements of the source list, and inserting these elements at the end of the destination list.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Copy the source list and return the reference to the copy.
+ *
+ * @param source the head reference of the source list
+ * @return reference to the head of the copy
+ */
+public static Node copyList(Node source) {
+    Node copyHead = null;
+    Node copyTail = null;
+    for (Node n = source; n != null; n = n.next) {
+        Node newNode = new Node(n.element, null);
+        if (copyHead == null) {
+            // First node is special case - head and tail are the same
+            copyHead = newNode;
+            copyTail = copyHead;
+        } else {
+            copyTail.next = newNode;
+            copyTail = copyTail.next;   // same as: copyTail = newNode;
+        }
+    }
+    return copyHead;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="reverse">Reversing a list</a></h2>
+<p>Since a linked list does not support random access, it is difficult to reverse a list <em>in-place</em> without changing the head reference. Instead we'll create a new list with its own head reference, and copy the elements in the reverse order. This method does not modify the original list, so we can call it an <em>out-of-place</em> method.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Reverses the list and returns the reference to the header node.
+ *
+ * @param list the list to reverse
+ * @param size the number of elements in the list
+ * @return reference to the head of the reversed list
+ */
+public static Node reverse(Node head, int size) {
+    Node newHead = null;
+
+    // We iterate over the nodes in the original list, and add a copy
+    // of each node to the *beginning* of the new list, which reverses 
+    // the order.
+    for (Node n = head; n != null; n = n.next) {
+        Node newNode = new Node(n.element, null);
+
+        // Add the node's copy to the beginning of the reversed list.
+        newNode.next = newHead;
+        newHead = newNode;
+    }
+    return newHead;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The problem with this approach is that it creates a copy of the whole list, just in the reverse order. We would like an <em>in-place</em> approach instead — re-order the links instead of copying the nodes! That would of course change the original list, and would have a new head reference (which is the reference to the tail node in the original list).</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Reverses the list and returns the reference to the header node.
+ *
+ * @param list the list to reverse
+ * @param size the number of elements in the list
+ * @return reference to the head of the reversed list
+ */
+public static Node reverse(Node head, int size) {
+    Node newHead = null;
+
+    // We iterate over the nodes in the original list, and add each
+    // node to the *beginning* of the new list, which reverses the 
+    // order. Have to be careful when we iterate -- have to save the
+    // reference to the *next* node before changing the next link.
+    Node n = head;
+    while (n != null) {
+        Node nextNode = n.next;         // need to do this!
+
+        // now change the link so that node 'n' is placed in the
+        // beginning of the list
+        n.next = newHead;
+        newHead = n;
+
+        // Can't do n = n.next because the link is changed. That's why
+        // we saved the reference to the next node earlier, so we can
+        // use that now.
+        n = nextNode;
+    }
+    
+    return newHead;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="rotateLeft">Rotating a list left</a></h2>
+<p>Rotating a list left is much simpler than rotating an array — the 2<sup>nd</sup> node becomes the new <em>head</em>, and the 1<sup>st</sup> becomes the new <em>tail</em> node. We don't have to actually <em>move</em> the elements, it's just a matter of re-arranging a few links!</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Rotates the given list left by one element
+ *
+ * @param head the list to rotate left
+ * @param size the number of elements in the list
+ * @return reference to the head of the rotated list
+ */
+public static Node rotateLeft(Node head, int size) {
+    // Bug alert - does it work for empty lists?
+    Node oldHead = head;
+    head = head.next;
+
+    // Now append the old head to the end of this list. Find the tail,
+    // and add the old head after the tail.
+    Node tail = head;
+    while (tail.next != null)
+        tail = tail.next;
+
+    // Now add after tail
+    tail.next = oldHead;
+    oldHead.next = null;
+
+    return head;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We can also use <em>circular</em> or <em>cyclic</em> lists.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<h2><a name="rotateRight">Rotating a list right</a></h2>
+<p>Rotating a list right is almost the same as rotating left — the  current <em>tail</em> becomes the new <em>head</em>.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Rotates the given list right by one element
+ *
+ * @param head the list to rotate right
+ * @param size the number of elements in the list
+ * @return reference to the head of the rotated list
+ */
+public static Node rotateRight(Node head, int size) {
+    // Bug alert - does it work for empty lists?
+
+    // Need to find tail and it's predecessor (do you see why?)
+    Node p = null;
+    Node q = head;
+    while (q.next != null) {
+        p = q;
+        q = q.next;
+    }
+
+    // Now q points to the tail node, and p points to it's predecessor
+    // First make tail the new head 
+    q.next = head;
+    head = q;
+
+    // make p the tail
+    p.next = null;
+
+    return head;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>We can also use <em>circular</em> or <em>cyclic</em> lists.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/linked-list-notes.html#toc">Table of contents</a></p>
+<p>You can look at the example  <a href="http://moodle.bracu.ac.bd/pluginfile.php/2786/mod_resource/content/3/LinkedList.java">LinkedList.java</a> class to see how these can be implemented. Run the <code>LinkedList.main()</code> to  see the output.</p></div></div><div class="modified">Last modified: Saturday, 23 November 2013, 02:58 PM</div>                        </div>
+                    </div>
+                </div>
+
+                                <div id="region-pre">
+                    <div class="region-content">
+                        <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5277#sb-1" class="skip-block">Skip Navigation</a><div id="inst4" class="block_navigation  block"><div class="header"><div class="title" id="yui_3_2_0_1_1392465188756844"><div class="block_action"><img class="block-hider-hide" alt="Hide Navigation block" title="Hide Navigation block" src="./cse220-01-sp14  Linked List manipulation_files/image.php"><img class="block-hider-show" alt="Show Navigation block" title="Show Navigation block" src="./cse220-01-sp14  Linked List manipulation_files/image(1).php"></div><h2>Navigation</h2></div></div><div class="content"><ul class="block_tree list"><li class="type_unknown depth_1 contains_branch"><p class="tree_item branch navigation_node"><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></p><ul><li class="type_course depth_2 collapsed contains_branch"><p class="tree_item branch"><span title="BRAC University Courses">Site pages</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Tags" href="http://moodle.bracu.ac.bd/tag/search.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Linked List manipulation_files/image(2).php">Tags</a></p></li></ul></li>
+<li class="type_system depth_2 contains_branch"><p class="tree_item branch canexpand"><span>Courses</span></p><ul><li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_1"><span title="MPH COURSES">MPH COURSES</span></p></li>
+<li class="type_category depth_3 contains_branch"><p class="tree_item branch canexpand"><span title="Spring 2014">Spring 2014</span></p><ul><li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_2"><a title="ANT 101/ANT102: Introduction to Anthropology (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=314">ant101-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_3"><a title="ANT 375: READING ETHNOGRAPHY: UNDERSTANDING THE ANTHROPOLOGICAL METHOD (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=316">ant375-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_4"><a title="APE 101	Mechanics, Properties of Matter, Waves &amp; Oscillations (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=346">ape-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_5"><a title="ARC 302: Design VI ( Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=323">arc302-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_6"><a title="ARC 327: History of Bengal Art and Architecture ( Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=324">arc327-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_7"><a title="ARC 512: Seminar II ( Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=325">arc512-01-sp14</a></p></li>
+<li class="type_course depth_4 contains_branch"><p class="tree_item branch canexpand"><a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></p><ul><li class="type_unknown depth_5 item_with_icon"><p class="tree_item leaf hasicon"><span><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Linked List manipulation_files/image(2).php">Participants</span></p></li>
+<li class="type_structure depth_5 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_8"><span>Course information</span></p></li>
+<li class="type_structure depth_5 contains_branch"><p class="tree_item branch canexpand"><span>Arrays and linked lists</span></p><ul><li class="type_activity depth_6 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_9"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5273"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Linked List manipulation_files/image(3).php">Array manipulation</a></p></li>
+<li class="type_activity depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5274"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Linked List manipulation_files/image(4).php">Array manipulation (PDF)</a></p></li>
+<li class="type_activity depth_6 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_10"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5275"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Linked List manipulation_files/image(3).php">Circular array manipulation</a></p></li>
+<li class="type_activity depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5276"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Linked List manipulation_files/image(4).php">Circular array manipulation (PDF)</a></p></li>
+<li class="type_activity depth_6 item_with_icon current_branch"><p class="tree_item leaf hasicon active_tree_node"><a title="Page" href="./cse220-01-sp14  Linked List manipulation_files/cse220-01-sp14  Linked List manipulation.htm"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Linked List manipulation_files/image(3).php">Linked List manipulation</a></p></li>
+<li class="type_activity depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5278"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Linked List manipulation_files/image(4).php">Linked list manipulation (PDF)</a></p></li>
+<li class="type_activity depth_6 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_11"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5279"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Linked List manipulation_files/image(3).php">Dummy headed doubly linked circular list</a></p></li>
+<li class="type_activity depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5280"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Linked List manipulation_files/image(4).php">Dummy headed doubly linked circular list (PDF)</a></p></li></ul></li></ul></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_12"><a title="CSE 220: Data Structures Lab (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=340">cse220lab-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_13"><a title="CSE 221: Algorithms (Spring &#39;14))" href="http://moodle.bracu.ac.bd/course/view.php?id=329">cse221-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_14"><a title="CSE 260: Digital Logic Design  (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=341">cse260-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_15"><a title="CSE 320/EEE 361: Data Communications (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=319">cse320-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_16"><a title="CSE 321: Operating Systems (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=330">cse321-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_17"><a title="CSE 330: Numerical Methods (Section 1&amp;3;Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=332">cse330-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_18"><a title="CSE 340: Computer Architecture ( Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=310">cse340-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_19"><a title="CSE 370:Database Systems (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=331">cse370-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_20"><a title="CSE 421/EEE 465: Computer Networks (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=320">cse421-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_21"><a title="CSE 490/EEE 453: Special Topics: WAN Routing and Technologies (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=321">cse490-01-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_22"><a title="ECO 101: Introduction to Microeconomics ( Section 5&amp;6;Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=338">eco101-05-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_23"><a title="ECO 101: Introduction to Microeconomics (Section 2, Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=317">eco101-02-sp14</a></p></li>
+<li class="type_course depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_24"><a title="ECO 201: Mathematics for Business and Economics ( Section 2&amp;3;Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=318">eco201-02-sp14</a></p></li>
+<li class="type_setting depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="View all courses" href="http://moodle.bracu.ac.bd/course/category.php?id=12"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Linked List manipulation_files/image(2).php">View all courses</a></p></li></ul></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_25"><span title="Fall  2013">Fall  2013</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_26"><span title="Summer 2013">Summer 2013</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_27"><span title="Spring 2013 ">Spring 2013 </span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_28"><span title="Fall 2012">Fall 2012</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_29"><span title="Summer 2012">Summer 2012</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_30"><span title="Spring 2012">Spring 2012</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_31"><span title="Fall 2011">Fall 2011</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_32"><span title="Summer 2011">Summer 2011</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_33"><span title="Miscellaneous">Miscellaneous</span></p></li>
+<li class="type_category depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_34"><span title="Sandbox">Sandbox</span></p></li></ul></li></ul></li></ul></div></div><span id="sb-1" class="skip-block-to"></span><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5277#sb-2" class="skip-block">Skip Settings</a><div id="inst5" class="block_settings  block"><div class="header"><div class="title" id="yui_3_2_0_1_1392465188756864"><div class="block_action"><img class="block-hider-hide" alt="Hide Settings block" title="Hide Settings block" src="./cse220-01-sp14  Linked List manipulation_files/image.php"><img class="block-hider-show" alt="Show Settings block" title="Show Settings block" src="./cse220-01-sp14  Linked List manipulation_files/image(1).php"></div><h2>Settings</h2></div></div><div class="content"><div id="settingsnav" class="box block_tree_box"><ul class="block_tree list"><li class="type_course collapsed contains_branch"><p class="tree_item branch root_node"><span>Course administration</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Enrol me in this course" href="http://moodle.bracu.ac.bd/enrol/index.php?id=328"><img alt="" class="smallicon navicon" title="" src="./cse220-01-sp14  Linked List manipulation_files/image(5).php">Enrol me in this course</a></p></li></ul></li></ul></div></div></div><span id="sb-2" class="skip-block-to"></span>                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- START OF FOOTER -->
+        <div id="page-footer" class="clearfix">
+        <p class="helplink"></p>
+        <div class="logininfo">You are currently using guest access (<a href="https://moodle.bracu.ac.bd/login/index.php">Login</a>)</div><div class="homelink"><a href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></div>    </div>
+    </div>
+<script type="text/javascript" src="./cse220-01-sp14  Linked List manipulation_files/javascript(3).php"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"repository":{"add":"Add","back":"&laquo; Back","close":"Close","cleancache":"Clean my cache files","copying":"Copying","date":"Date","downloadsucc":"The file has been downloaded successfully","emptylist":"Empty list","error":"An unknown error occurred!","federatedsearch":"Federated search","filenotnull":"You must select a file to upload.","getfile":"Select this file","iconview":"View as icons","invalidjson":"Invalid JSON string","linkexternal":"Link external","listview":"View as list","loading":"Loading...","login":"Login","logout":"Logout","noenter":"Nothing entered","noresult":"No search result","manageurl":"Manage","popup":"Click \"Login\" button to login","preview":"Preview","refresh":"Refresh","save":"Save","saveas":"Save as","saved":"Saved","saving":"Saving","search":"Search","searching":"Search in","size":"Size","submit":"Submit","sync":"Sync","title":"Choose a file...","upload":"Upload this file","uploading":"Uploading...","xhtmlerror":"You are probably using XHTML strict header, some YUI Component doesn't work in this mode, please turn it off in moodle","chooselicense":"Choose license","author":"Author","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","norepositoriesexternalavailable":"Sorry, none of your current repositories can return external files.","nofilesattached":"No files attached","filepicker":"File picker","nofilesavailable":"No files available"},"moodle":{"cancel":"Cancel","help":"Help","ok":"OK","error":"Error","info":"Information","viewallcourses":"View all courses","yes":"Yes"},"block":{"addtodock":"Move this to the dock","undockitem":"Undock this item","undockall":"Undock all"},"langconfig":{"thisdirectionvertical":"btt"},"admin":{"confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var navtreeexpansions4 = [{"id":"expandable_branch_1","key":"13","type":10},{"id":"expandable_branch_2","key":"314","type":20},{"id":"expandable_branch_3","key":"316","type":20},{"id":"expandable_branch_4","key":"346","type":20},{"id":"expandable_branch_5","key":"323","type":20},{"id":"expandable_branch_6","key":"324","type":20},{"id":"expandable_branch_7","key":"325","type":20},{"id":"expandable_branch_8","key":"4414","type":30},{"id":"expandable_branch_9","key":"5273","type":40},{"id":"expandable_branch_10","key":"5275","type":40},{"id":"expandable_branch_11","key":"5279","type":40},{"id":"expandable_branch_12","key":"340","type":20},{"id":"expandable_branch_13","key":"329","type":20},{"id":"expandable_branch_14","key":"341","type":20},{"id":"expandable_branch_15","key":"319","type":20},{"id":"expandable_branch_16","key":"330","type":20},{"id":"expandable_branch_17","key":"332","type":20},{"id":"expandable_branch_18","key":"310","type":20},{"id":"expandable_branch_19","key":"331","type":20},{"id":"expandable_branch_20","key":"320","type":20},{"id":"expandable_branch_21","key":"321","type":20},{"id":"expandable_branch_22","key":"338","type":20},{"id":"expandable_branch_23","key":"317","type":20},{"id":"expandable_branch_24","key":"318","type":20},{"id":"expandable_branch_25","key":"11","type":10},{"id":"expandable_branch_26","key":"10","type":10},{"id":"expandable_branch_27","key":"9","type":10},{"id":"expandable_branch_28","key":"8","type":10},{"id":"expandable_branch_29","key":"7","type":10},{"id":"expandable_branch_30","key":"6","type":10},{"id":"expandable_branch_31","key":"5","type":10},{"id":"expandable_branch_32","key":"2","type":10},{"id":"expandable_branch_33","key":"1","type":10},{"id":"expandable_branch_34","key":"4","type":10}];
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+YUI(M.yui.loader).use('node', function(Y) {
+M.util.load_flowplayer();
+setTimeout("fix_column_widths()", 20);
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"4","instance":"4","candock":false,"courselimit":"20","expansionlimit":0});
+})
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"5","instance":"5","candock":false});
+})
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navigation","preference":"block4hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+M.util.init_block_hider(Y, {"id":"inst5","title":"Settings","preference":"block5hidden","tooltipVisible":"Hide Settings block","tooltipHidden":"Show Settings block"});
+
+});
+//]]>
+</script>
+
+
+<div id="dock" class="dock dock_left_vertical nothingdocked"><div class="buttons_container" id="yui_3_2_0_1_139246518875639"><div class="dockeditem_container"></div><div class="controls"><img alt="Undock all" title="Undock all" src="./cse220-01-sp14  Linked List manipulation_files/image(6).php"></div></div></div><div style="display: none;"></div><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_contextMenuIFrame" scrolling="no" style="border: 0px solid; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_bubblesIFrame" scrolling="no" style="border: 0px solid; position: absolute; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><div id="GingerWidgetInfo" style="display:none;">{"version":"0.1.0.370","isExtension":true,"extensionName":"Chrome"}</div></body><span id="skype_highlighting_settings" display="none" autoextractnumbers="0" hightlightingswitched="0"></span><object id="skype_plugin_object" location.href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5277" location.hostname="moodle.bracu.ac.bd" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0" style="position: absolute; visibility: hidden; left: -100px; top: -100px;"></object></html>
